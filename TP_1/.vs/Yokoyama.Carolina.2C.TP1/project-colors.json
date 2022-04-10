@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "e42956a0-59fa-47b9-b259-db55f300c4fb": {
+      "ProjectGuid": "e42956a0-59fa-47b9-b259-db55f300c4fb",
+      "DisplayName": "Entidades",
+      "ColorIndex": 0
+    },
+    "9eb441b0-3cf0-42ed-b166-17de1e572dc8": {
+      "ProjectGuid": "9eb441b0-3cf0-42ed-b166-17de1e572dc8",
+      "DisplayName": "MiCalculadora",
+      "ColorIndex": 1
+    },
+    "7b9f3fad-6ccc-491f-9f72-1ea6bb059c09": {
+      "ProjectGuid": "7b9f3fad-6ccc-491f-9f72-1ea6bb059c09",
+      "DisplayName": "MiCalculadora",
+      "ColorIndex": 2
+    },
+    "e743b016-e611-47f0-a264-4537f19bbbb5": {
+      "ProjectGuid": "e743b016-e611-47f0-a264-4537f19bbbb5",
+      "DisplayName": "MiCalculadora",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}
