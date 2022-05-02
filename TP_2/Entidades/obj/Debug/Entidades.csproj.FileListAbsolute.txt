@@ -17,3 +17,9 @@ C:\Users\Carolina\Downloads\TP_02\Entidades\obj\Debug\Entidades.csproj.AssemblyR
 C:\Users\Carolina\Downloads\TP_02\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
 C:\Users\Carolina\Downloads\TP_02\Entidades\obj\Debug\Entidades.dll
 C:\Users\Carolina\Downloads\TP_02\Entidades\obj\Debug\Entidades.pdb
+C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_2\Entidades\bin\Debug\Entidades.dll
+C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_2\Entidades\bin\Debug\Entidades.pdb
+C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_2\Entidades\obj\Debug\Entidades.csproj.AssemblyReference.cache
+C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_2\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_2\Entidades\obj\Debug\Entidades.dll
+C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_2\Entidades\obj\Debug\Entidades.pdb
