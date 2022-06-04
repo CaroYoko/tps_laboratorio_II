@@ -65,6 +65,7 @@
             this.Controls.Add(this.btnExportar);
             this.Controls.Add(this.dgMedicos);
             this.Name = "FrmListarMedicos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Médicos";
             this.Load += new System.EventHandler(this.FrmListarMedicos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgMedicos)).EndInit();

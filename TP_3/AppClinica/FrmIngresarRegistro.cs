@@ -36,13 +36,22 @@ namespace AppClinica
 
         }
 
-        private void ActualizarDataGrid()
+        private void btnRegistrarTurno_Click(object sender, EventArgs e)
         {
-            dgPacientes.DataSource = Turno.FiltrarPorEstado(Turno.Estado.Pendiente);
-            dgPacientes.Columns.Add(CrearComboBoxDeEstado());
-            dgPacientes.Columns["EstadoTurno"].Visible = false;
-            // AjustarOrdenColumnas();
+            try
+            {
+                CambiarEstados();
 
+                if (MessageBox.Show("Registro exitoso", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
+                {
+                    this.Close();
+                }
+
+            }
+            catch (ListaVaciaException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -60,6 +69,23 @@ namespace AppClinica
 
         }
 
+
+        /// <summary>
+        /// Actualiza el Datagrid 
+        /// </summary>
+        private void ActualizarDataGrid()
+        {
+            dgPacientes.DataSource = Turno.FiltrarPorEstado(Turno.Estado.Pendiente);
+            dgPacientes.Columns.Add(CrearComboBoxDeEstado());
+            dgPacientes.Columns["EstadoTurno"].Visible = false;
+          
+        }
+
+        
+        /// <summary>
+        /// Crea la columna del datagrid con combobox cargado con los estados 
+        /// </summary>
+        /// <returns>Columna con combobox</returns>
         private DataGridViewComboBoxColumn CrearComboBoxDeEstado()
         {
             DataGridViewComboBoxColumn comboboxPresentes = new DataGridViewComboBoxColumn();
@@ -70,6 +96,11 @@ namespace AppClinica
             return comboboxPresentes;
         }
 
+
+        /// <summary>
+        /// Cambia el estado del turno seun lo cargado en el combobox
+        /// </summary>
+        /// <exception cref="ListaVaciaException"></exception>
         private void CambiarEstados()
         {
             if (dgPacientes.Rows.Count == 0)
@@ -97,22 +128,7 @@ namespace AppClinica
 
         }
 
-        private void btnRegistrarTurno_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                CambiarEstados();
-
-                if (MessageBox.Show("Registro exitoso", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
-                {
-                    this.Close();
-                }
-
-            }
-            catch (ListaVaciaException ex) {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+       
 
 
 

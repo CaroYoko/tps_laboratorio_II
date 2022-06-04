@@ -12,27 +12,35 @@ using Entidades;
 namespace AppClinica
 {
     public partial class FrmListarMedicos : Form
-    {
-        
+    {        
         public FrmListarMedicos()
         {
             InitializeComponent();
         }
 
         private void FrmListarMedicos_Load(object sender, EventArgs e)
-        {
-            
-            this.ActualizarDataGrid();
-            //this.ObtenerFila();
+        {            
+            this.ActualizarDataGrid();            
         }
 
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            ArchivosJson<List<Medico>>.Escribir(Clinica.listadoMedico, "Medicos_Exportado", Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
+
+        }
+
+        /// <summary>
+        /// Actualiza el Datagrid
+        /// </summary>
         private void ActualizarDataGrid()
         {
             dgMedicos.DataSource = Clinica.listadoMedico;
             AjustarOrdenColumnas();
-
         }
 
+        /// <summary>
+        /// Ajusta el orden de las columnas del Datagrid
+        /// </summary>
         private void AjustarOrdenColumnas()
         {
             dgMedicos.Columns["Id"].DisplayIndex = 0;
@@ -45,10 +53,5 @@ namespace AppClinica
         }
        
 
-        private void btnExportar_Click(object sender, EventArgs e)
-        {
-            ArchivosJson<List<Medico>>.Escribir(Clinica.listadoMedico, "Medicos_Exportado", Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
-
-        }
     }
 }

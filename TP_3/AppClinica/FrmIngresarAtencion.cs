@@ -35,15 +35,8 @@ namespace AppClinica
 
             ActualizarDataGrid();
 
-
         }
-
-        private void ActualizarDataGrid()
-        {
-            dgPacientes.DataSource = Turno.FiltrarPorEstado(Turno.Estado.Espera);
-          
-        }
-
+               
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             int dni;
@@ -59,6 +52,41 @@ namespace AppClinica
 
         }
 
+        private void btnAtender_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CargarTurnoSeleccion();
+                if (turnoSeleccion is not null)
+                {
+                    turnoSeleccion.EstadoTurno = Turno.Estado.Atendido;
+                }
+
+                if (MessageBox.Show("Registro exitoso", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
+                {
+                    this.Close();
+                }
+
+            }
+            catch (ListaVaciaException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        /// <summary>
+        /// Actualiza el Datagrid
+        /// </summary>
+        private void ActualizarDataGrid()
+        {
+            dgPacientes.DataSource = Turno.FiltrarPorEstado(Turno.Estado.Espera);
+        }
+
+        /// <summary>
+        /// Recupera el turno seleccionado en Datagrid
+        /// </summary>
+        /// <exception cref="ListaVaciaException"></exception>
         private void CargarTurnoSeleccion()
         {
             int indiceFila = dgPacientes.CurrentRow is not null ? dgPacientes.CurrentRow.Index : -1;
@@ -78,26 +106,6 @@ namespace AppClinica
 
         }       
                
-        private void btnAtender_Click(object sender, EventArgs e)
-        {
-            try { 
-            
-                CargarTurnoSeleccion();
-                if (turnoSeleccion is not null) {
-                    turnoSeleccion.EstadoTurno = Turno.Estado.Atendido;
-                }
-
-                if (MessageBox.Show("Registro exitoso", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
-                {
-                    this.Close();
-                }
-            
-            }
-            catch (ListaVaciaException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
+       
     }
 }

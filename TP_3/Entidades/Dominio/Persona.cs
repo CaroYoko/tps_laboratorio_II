@@ -57,20 +57,7 @@ namespace Entidades
             set { this.dni = value; }
         }
                 
-        public abstract void AgregarAListado();
-
-        public virtual string MostrarTodo()
-        {
-
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Nombre y Apellido: {this.nombre} {this.apellido}");
-            sb.AppendLine($"D.N.I: {this.dni}"); 
-            sb.AppendLine($"Cel: {this.celular}");
-            sb.AppendLine($"Email: {this.email}");
-
-            return sb.ToString();
-
-        }
+        public abstract void AgregarAListado();             
 
         public override string ToString()
         {

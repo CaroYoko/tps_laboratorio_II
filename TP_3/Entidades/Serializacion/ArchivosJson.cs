@@ -11,7 +11,7 @@ namespace Entidades
     public static class ArchivosJson<T> where T : class
     {   
         /// <summary>
-        /// 
+        /// Método genérico que serializa un objeto en formato json 
         /// </summary>
         /// <param name="datos"></param>
         /// <param name="nombre"></param>
@@ -39,11 +39,11 @@ namespace Entidades
         }
 
         /// <summary>
-        ///     
+        /// Método genérico que deserializa en formato json    
         /// </summary>
         /// <param name="nombre"></param>
         /// <param name="path"></param>
-        /// <returns></returns>
+        /// <returns> Retorna el objeto</returns>
         /// <exception cref="Exception"></exception>
         public static T Leer(string nombre, string path)
          {           

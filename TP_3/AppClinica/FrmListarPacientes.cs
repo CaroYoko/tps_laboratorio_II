@@ -21,13 +21,20 @@ namespace AppClinica
         }
 
         private void FrmListarPacientes_Load(object sender, EventArgs e)
-        {
-          
+        {          
             this.ActualizarDataGrid();
             this.ObtenerFila();
 
         }
 
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            ArchivosJson<List<Paciente>>.Escribir(Clinica.listadoPacientes, "Pacientes_Exportado", Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
+        }
+
+        /// <summary>
+        /// Actualiza el Datagrid
+        /// </summary>
         private void ActualizarDataGrid()
         {            
             dgPacientes.DataSource = Clinica.listadoPacientes;
@@ -35,6 +42,9 @@ namespace AppClinica
 
         }
 
+        /// <summary>
+        /// Ajusta el orden de las columnas del Datagrid
+        /// </summary>
         private void AjustarOrdenColumnas()
         {
             dgPacientes.Columns["Id"].DisplayIndex = 0;
@@ -46,7 +56,9 @@ namespace AppClinica
             dgPacientes.Columns["Email"].DisplayIndex = 4;
         }
 
-
+        /// <summary>
+        /// Obtiene el dato de la fila
+        /// </summary>
         private void ObtenerFila()
         {
             int indiceFila = dgPacientes.CurrentRow is not null ? dgPacientes.CurrentRow.Index : -1;
@@ -59,11 +71,6 @@ namespace AppClinica
                
                 FrmListarPacientes.pacienteSeleccion = Paciente.BuscarPacientePorId(auxId);
             }
-        }
-
-        private void btnExportar_Click(object sender, EventArgs e)
-        {
-            ArchivosJson<List<Paciente>>.Escribir(Clinica.listadoPacientes, "Pacientes_Exportado", Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
         }
 
       

@@ -109,6 +109,7 @@
             this.Controls.Add(this.txtApellido);
             this.Controls.Add(this.txtNombre);
             this.Name = "FrmAltaPacientes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alta Pacientes";
             this.ResumeLayout(false);
             this.PerformLayout();

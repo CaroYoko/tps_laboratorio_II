@@ -96,6 +96,7 @@
             this.Controls.Add(this.btnExportar);
             this.Controls.Add(this.dgTurnos);
             this.Name = "FrmListarTurnos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " Turnos";
             this.Load += new System.EventHandler(this.FrmListarTurnos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgTurnos)).EndInit();

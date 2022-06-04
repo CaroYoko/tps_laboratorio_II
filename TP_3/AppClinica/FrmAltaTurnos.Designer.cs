@@ -187,6 +187,7 @@
             this.Controls.Add(this.dpFechaTurno);
             this.Controls.Add(this.btnGenerarTurno);
             this.Name = "FrmAltaTurnos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alta Turnos";
             this.Load += new System.EventHandler(this.FrmAltaTurnos_Load);
             this.ResumeLayout(false);

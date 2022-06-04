@@ -18,6 +18,12 @@ namespace Entidades
             path += @"\Datos\";
         }
 
+        /// <summary>
+        /// Método genérico que serializa un objeto en formato xml 
+        /// </summary>
+        /// <param name="datos"></param>
+        /// <param name="nombre"></param>
+        /// <exception cref="Exception"></exception>
         public static void Escribir(T datos, string nombre)
         {
             string nombreArchivo = path + "SerializacionXml_" + nombre +"_"+ DateTime.Now.ToString("dd-MM-yyyy") + ".xml";

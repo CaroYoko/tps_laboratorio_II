@@ -29,29 +29,62 @@ namespace Entidades
 
         }
 
-
+        /// <summary>
+        /// Importa archivos Json
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="archivo"></param>
         public static void Importar<T>(string archivo) where T : class, IListable
         {
-            List<T> auxLista = new List<T>();
+            try
+            {
+                List<T> auxLista = new List<T>();
 
-            auxLista = ArchivosJson<List<T>>.Leer(archivo, AppDomain.CurrentDomain.BaseDirectory);
+                auxLista = ArchivosJson<List<T>>.Leer(archivo, AppDomain.CurrentDomain.BaseDirectory);
 
-            AgregarListado(auxLista);
+                AgregarListado(auxLista);
+            }
+            catch(NoEncontradoExcepcion ex) {
+
+                throw ex;
+            
+            }
+
+
         }
 
 
-
+        /// <summary>
+        /// Metodo generico que agrega a listado segun corresponda
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="lista"></param>
         public static void AgregarListado<T>(List<T> lista) where T : class, IListable
         {
-            if (lista is not null)
-            {
-                foreach (T item in lista)
+            try {
+
+                if (lista is not null)
                 {
-                    item.AgregarAListado();
+                    foreach (T item in lista)
+                    {
+                        item.AgregarAListado();
+                    }
                 }
+
+            }
+            catch (NoEncontradoExcepcion ex) {
+
+                throw ex;
             }
         }
 
+        /// <summary>
+        /// Filtra la lista de turnos segun fecha y dni del paciente.
+        /// </summary>
+        /// <param name="fecha"></param>
+        /// <param name="dni"></param>
+        /// <returns> Si se utiliza el primer parametro, devuelve la lista con todos los turnos de la fecha </returns>
+        /// <returns> Si se utiliza el primer y segundo parametro, devuelve la lista con todos los turnos de la fecha de ese dni de paciente </returns>
         public static List<Turno> BuscarTurno(DateTime fecha, int dni = 0)
         {
             List<Turno> lista = new List<Turno>();

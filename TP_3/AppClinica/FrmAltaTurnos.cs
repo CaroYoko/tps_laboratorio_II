@@ -46,7 +46,50 @@ namespace AppClinica
 
         }
 
+        private void btnGenerarTurno_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Medico medico = Medico.BuscarMedicoPorDNI(int.Parse(cbMedicos.Text));
+                Paciente paciente = Paciente.BuscarPacientePorDNI(int.Parse(cbPacientes.Text));
 
+                DateTime fecha = Convert.ToDateTime(dpFechaTurno.Text);
+                DateTime hora = Convert.ToDateTime(cbHorario.SelectedItem);
+                DateTime fechaConvertida = fecha.AddHours(hora.Hour).AddMinutes(hora.Minute);
+
+                Turno turno = new Turno(fechaConvertida, paciente, medico);
+                turno.AgregarAListado();
+
+                if (MessageBox.Show("Agregado con éxito", "Turno", MessageBoxButtons.OK) == DialogResult.OK)
+                {
+                    this.Close();
+                }
+            }
+            catch (NoDisponibleException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (NoExisteException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Los valores ingresados NO son válidos");
+            }
+
+        }
+
+        private void cbHorario_Click(object sender, EventArgs e)
+        {
+            cbHorario.DataSource = CalcularHorarioDisponible();
+        }
+
+        /// <summary>
+        /// Calcula el horario disponible del medico a partir del día elegido
+        /// </summary>
+        /// <returns>Lista de horarios disponibles</returns>
         private List<string> CalcularHorarioDisponible()
         {
 
@@ -83,44 +126,7 @@ namespace AppClinica
         }
 
 
-        private void btnGenerarTurno_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Medico medico = Medico.BuscarMedicoPorDNI(int.Parse(cbMedicos.Text));
-                Paciente paciente = Paciente.BuscarPacientePorDNI(int.Parse(cbPacientes.Text));
 
-                DateTime fecha = Convert.ToDateTime(dpFechaTurno.Text);
-                DateTime hora = Convert.ToDateTime(cbHorario.SelectedItem);
-                DateTime fechaConvertida = fecha.AddHours(hora.Hour).AddMinutes(hora.Minute);
-
-                Turno turno = new Turno(fechaConvertida, paciente, medico);
-                turno.AgregarAListado();                
-               
-                if (MessageBox.Show("Agregado con éxito", "Turno", MessageBoxButtons.OK) == DialogResult.OK) {
-                    this.Close();
-                }
-            }
-            catch (NoDisponibleException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            catch (NoExisteException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            catch (Exception) {
-                                
-                MessageBox.Show("Los valores ingresados NO son válidos");
-            }
-
-        }
-
-
-        private void cbHorario_Click(object sender, EventArgs e)
-        {
-            cbHorario.DataSource = CalcularHorarioDisponible();
-        }
 
 
     }

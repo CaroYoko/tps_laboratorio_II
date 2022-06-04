@@ -152,7 +152,7 @@ namespace Entidades
             }
             else
             {
-                throw new NoDisponibleException("No es posible guardar el turno");
+                throw new NoEncontradoExcepcion("No es posible guardar el turno");
             }
         }
 
