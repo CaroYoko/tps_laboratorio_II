@@ -21,22 +21,39 @@ namespace AppClinica
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            int auxDni;
-
-            if (!string.IsNullOrWhiteSpace(txtNombre.Text) && !string.IsNullOrWhiteSpace(txtApellido.Text) && !string.IsNullOrWhiteSpace(txtCelular.Text) && !string.IsNullOrWhiteSpace(txtEmail.Text) && !string.IsNullOrWhiteSpace(txtDni.Text) && int.TryParse(txtDni.Text,out auxDni))
+            try
             {
+                int auxDni;
 
-                Paciente paciente = new Paciente(txtNombre.Text, txtApellido.Text, txtCelular.Text, txtEmail.Text, auxDni, (Paciente.EObraSocial)cbObraSocial.SelectedItem);
-                paciente.AgregarAListado();
+                if (!string.IsNullOrWhiteSpace(txtNombre.Text) && !string.IsNullOrWhiteSpace(txtApellido.Text) && !string.IsNullOrWhiteSpace(txtCelular.Text) && !string.IsNullOrWhiteSpace(txtEmail.Text) && !string.IsNullOrWhiteSpace(txtDni.Text) && int.TryParse(txtDni.Text, out auxDni))
+                {
+
+                    Paciente paciente = new Paciente(txtNombre.Text, txtApellido.Text, txtCelular.Text, txtEmail.Text, auxDni, (Paciente.EObraSocial)cbObraSocial.SelectedItem);
+                    paciente.AgregarAListado();
+                    this.Close();
+                }
+                else {
+
+                    MessageBox.Show("Faltan campos por rellenar o son valores inválidos");
+                    LimpiarTextBox();
+                }
+
             }
-            else {
-
-                MessageBox.Show("Faltan campos por rellenar o son valores inválidos");
+            catch (ArgumentoNoValidoException ex)
+            {
+                MessageBox.Show(ex.Message);
+                LimpiarTextBox();
             }
-
-            this.Close();
         }
 
+        private void LimpiarTextBox() {
+           
+            txtNombre.Text = "";
+            txtApellido.Text = "";
+            txtCelular.Text = "";
+            txtEmail.Text = "";
+            txtDni.Text = "";
 
+        }
     }
 }
