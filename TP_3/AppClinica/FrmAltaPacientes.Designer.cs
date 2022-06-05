@@ -79,12 +79,12 @@
             // 
             // cbObraSocial
             // 
+            this.cbObraSocial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbObraSocial.FormattingEnabled = true;
             this.cbObraSocial.Location = new System.Drawing.Point(51, 327);
             this.cbObraSocial.Name = "cbObraSocial";
             this.cbObraSocial.Size = new System.Drawing.Size(331, 23);
             this.cbObraSocial.TabIndex = 5;
-            this.cbObraSocial.Text = "OBRA SOCIAL";
             // 
             // btnAceptar
             // 

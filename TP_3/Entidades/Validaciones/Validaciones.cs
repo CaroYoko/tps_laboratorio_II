@@ -9,6 +9,13 @@ namespace Entidades
 {
     public class Validaciones
     {
+        /// <summary>
+        /// Método encargado de validar que el string pasado por parámetro
+        /// sean solamente letras
+        /// </summary>
+        /// <param name="texto"></param>
+        /// <returns>Si cumple con la expresión regular devuelve true, sino false</returns>
+        /// <exception cref="ArgumentoNoValidoException"></exception>
         public static bool EsNombreApellidoValido(string texto)
         {
             try
@@ -22,6 +29,13 @@ namespace Entidades
 
         }
 
+        /// <summary>
+        /// Método encargado de validar que el string pasado por parámetro
+        /// tenga el formato de email, Ej: diario@mail.com
+        /// </summary>
+        /// <param name="texto"></param>
+        /// <returns>Si cumple con la expresión regular devuelve true, sino false</returns>
+        /// <exception cref="ArgumentoNoValidoException"></exception>
         public static bool EsMailValido(string texto)
         {
             try
@@ -35,6 +49,13 @@ namespace Entidades
 
         }
 
+        /// <summary>
+        /// Método encargado de validar que el string pasado por parámetro
+        /// sean solo ocho números
+        /// </summary>
+        /// <param name="texto"></param>
+        /// <returns>Si cumple con la expresión regular devuelve true, sino false</returns>
+        /// <exception cref="ArgumentoNoValidoException"></exception>
         public static bool EsDNIValido(int texto)
         {
             try
@@ -48,6 +69,13 @@ namespace Entidades
 
         }
 
+        /// <summary>
+        /// Método encargado de validar que el string pasado por parámetro
+        /// sean once numeros que pueden estar separados con guiones. Ej: 456-456-4567
+        /// </summary>
+        /// <param name="texto"></param>
+        /// <returns>Si cumple con la expresión regular devuelve true, sino false</returns>
+        /// <exception cref="ArgumentoNoValidoException"></exception>
         public static bool EsCelularValido(string texto)
         {
             try
