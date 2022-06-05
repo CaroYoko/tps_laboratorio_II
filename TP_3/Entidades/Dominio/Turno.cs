@@ -119,6 +119,11 @@ namespace Entidades
             return true;
         }
 
+        /// <summary>
+        /// Busca el turno con el ID indicado
+        /// </summary>
+        /// <param name="auxId"></param>
+        /// <returns>Retorna el Turno buscado</returns>
         public static Turno BuscarTurnoPorId(int auxId)
         {
             Turno retorno = null;
@@ -136,10 +141,9 @@ namespace Entidades
         /// Filtra la lista de turnos del día de la fecha segun su estado
         /// </summary>
         /// <param name="estado"></param>
-        /// <returns> Retrorn la lista filtrada</returns>
+        /// <returns> Retrorna la lista filtrada</returns>
         public static List<Turno> FiltrarPorEstado(Estado estado)
         {
-
             List<Turno> auxLista = new List<Turno>();
 
             foreach (Turno turno in Clinica.BuscarTurno(DateTime.Now.Date))
@@ -173,6 +177,11 @@ namespace Entidades
             }
         }
 
+        /// <summary>
+        /// Saca de la lista de turnos el turno pasado por parámetro
+        /// </summary>
+        /// <param name="turnoSeleccion"></param>
+        /// <returns>true si se logró, sino false</returns>
         public static bool BorrarTurno(Turno turnoSeleccion)
         {
             if (turnoSeleccion is not null)

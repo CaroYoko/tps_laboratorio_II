@@ -37,7 +37,7 @@
             this.lblFechaTurno = new System.Windows.Forms.Label();
             this.cbHorario = new System.Windows.Forms.ComboBox();
             this.lblHora = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbEspecialidad = new System.Windows.Forms.ComboBox();
             this.lblEspecialidad = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -47,7 +47,7 @@
             this.btnGenerarTurno.Location = new System.Drawing.Point(104, 306);
             this.btnGenerarTurno.Name = "btnGenerarTurno";
             this.btnGenerarTurno.Size = new System.Drawing.Size(232, 45);
-            this.btnGenerarTurno.TabIndex = 4;
+            this.btnGenerarTurno.TabIndex = 6;
             this.btnGenerarTurno.Text = "GENERAR TURNO";
             this.btnGenerarTurno.UseVisualStyleBackColor = true;
             this.btnGenerarTurno.Click += new System.EventHandler(this.btnGenerarTurno_Click);
@@ -62,7 +62,7 @@
             this.dpFechaTurno.Location = new System.Drawing.Point(151, 194);
             this.dpFechaTurno.Name = "dpFechaTurno";
             this.dpFechaTurno.Size = new System.Drawing.Size(245, 23);
-            this.dpFechaTurno.TabIndex = 5;
+            this.dpFechaTurno.TabIndex = 4;
             // 
             // cbPacientes
             // 
@@ -73,7 +73,7 @@
             this.cbPacientes.Location = new System.Drawing.Point(151, 38);
             this.cbPacientes.Name = "cbPacientes";
             this.cbPacientes.Size = new System.Drawing.Size(243, 23);
-            this.cbPacientes.TabIndex = 7;
+            this.cbPacientes.TabIndex = 1;
             // 
             // lblDniPaciente
             // 
@@ -96,7 +96,9 @@
             this.cbMedicos.Location = new System.Drawing.Point(151, 142);
             this.cbMedicos.Name = "cbMedicos";
             this.cbMedicos.Size = new System.Drawing.Size(243, 23);
-            this.cbMedicos.TabIndex = 9;
+            this.cbMedicos.TabIndex = 3;
+            this.cbMedicos.Click += new System.EventHandler(this.cbMedicos_Click);
+            this.cbMedicos.Enter += new System.EventHandler(this.cbMedicos_Enter);
             // 
             // lblDniMedico
             // 
@@ -127,12 +129,13 @@
             this.cbHorario.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbHorario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbHorario.FormattingEnabled = true;
+            this.cbHorario.ItemHeight = 15;
             this.cbHorario.Location = new System.Drawing.Point(151, 246);
             this.cbHorario.Name = "cbHorario";
             this.cbHorario.Size = new System.Drawing.Size(243, 23);
             this.cbHorario.TabIndex = 12;
-            this.cbHorario.Text = "\"Elegir un horario\"";
             this.cbHorario.Click += new System.EventHandler(this.cbHorario_Click);
             // 
             // lblHora
@@ -147,16 +150,16 @@
             this.lblHora.TabIndex = 13;
             this.lblHora.Text = "Horarios Disponibles";
             // 
-            // comboBox1
+            // cbEspecialidad
             // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.cbEspecialidad.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(151, 90);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(243, 23);
-            this.comboBox1.TabIndex = 14;
+            this.cbEspecialidad.FormattingEnabled = true;
+            this.cbEspecialidad.Location = new System.Drawing.Point(151, 90);
+            this.cbEspecialidad.Name = "cbEspecialidad";
+            this.cbEspecialidad.Size = new System.Drawing.Size(243, 23);
+            this.cbEspecialidad.TabIndex = 2;
             // 
             // lblEspecialidad
             // 
@@ -176,7 +179,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(438, 374);
             this.Controls.Add(this.lblEspecialidad);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbEspecialidad);
             this.Controls.Add(this.lblHora);
             this.Controls.Add(this.cbHorario);
             this.Controls.Add(this.lblFechaTurno);
@@ -205,7 +208,7 @@
         private System.Windows.Forms.Label lblFechaTurno;
         private System.Windows.Forms.ComboBox cbHorario;
         private System.Windows.Forms.Label lblHora;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbEspecialidad;
         private System.Windows.Forms.Label lblEspecialidad;
     }
 }

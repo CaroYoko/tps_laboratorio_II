@@ -23,8 +23,7 @@ namespace Entidades
         static Paciente()
         {
             Paciente.ultimoId = 1;
-        }
-        
+        }        
 
         public Paciente() : base()
         {
@@ -48,8 +47,7 @@ namespace Entidades
 
                 Paciente.ultimoId = id + 1;
             }
-        }
-             
+        }             
 
         public int Id
         {
@@ -63,6 +61,12 @@ namespace Entidades
             set { this.obraSocial = value; }        
         }
 
+        /// <summary>
+        /// Busca un paciente por DNI
+        /// </summary>
+        /// <param name="dniPaciente"></param>
+        /// <returns>El paciente buscado</returns>
+        /// <exception cref="NoExisteException"></exception>
         public static Paciente BuscarPacientePorDNI(int dniPaciente)
         {            
             foreach (Paciente paciente in Clinica.listadoPacientes)
@@ -77,6 +81,11 @@ namespace Entidades
 
         }
 
+        /// <summary>
+        /// Busca un paciente por ID
+        /// </summary>
+        /// <param name="idPaciente"></param>
+        /// <returns>El paciente buscado</returns>
         public static Paciente BuscarPacientePorId(int idPaciente)
         {
             Paciente auxPaciente = null;
@@ -92,11 +101,19 @@ namespace Entidades
 
         }
 
+        /// <summary>
+        /// Agrega la instacia de paciente al listado de pacientes
+        /// </summary>
         public override void AgregarAListado()
         {
             Clinica.listadoPacientes.Add(this);
         }
 
+        /// <summary>
+        /// Saca de lista de pacientes el paciente pasado por parámetro
+        /// </summary>
+        /// <param name="paciente"></param>
+        /// <returns></returns>
         public static bool BorrarPaciente(Paciente paciente) {                      
 
             if (paciente is not null) { 

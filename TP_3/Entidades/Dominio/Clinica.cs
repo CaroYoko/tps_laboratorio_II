@@ -46,11 +46,8 @@ namespace Entidades
             }
             catch (NoEncontradoExcepcion ex)
             {
-
                 throw ex;
-
             }
-
 
         }
 
