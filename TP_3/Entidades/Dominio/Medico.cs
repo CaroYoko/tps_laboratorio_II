@@ -60,7 +60,7 @@ namespace Entidades
         /// </summary>
         /// <param name="dni"></param>
         /// <returns>Medico</returns>
-        /// <exception cref="NoExisteException"></exception>
+        /// <exception cref="NoEncontradoExcepcion"></exception>
         public static Medico BuscarMedicoPorDNI(int dni)
         {
             foreach (Medico medico in Clinica.listadoMedico)
@@ -71,7 +71,7 @@ namespace Entidades
                 }
             }
 
-            throw new NoExisteException("Médico no registrado");
+            throw new NoEncontradoExcepcion("Médico no registrado");
 
         }
 

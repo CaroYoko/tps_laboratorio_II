@@ -13,7 +13,7 @@ namespace TestUnitarios
         {
             //Arrange
             Clinica.listadoPacientes.Clear();
-            Paciente pacienteTest = new Paciente("Diego", "Gomez", "11-4567-1265", "gomezd@gmail.com", 45789456, Paciente.EObraSocial.PASTEUR);
+            Paciente pacienteTest = new Paciente("Diego", "Gomez", "119-456-1265", "gomezd@gmail.com", 45789456, Paciente.EObraSocial.PASTEUR);
             List<Paciente> listaPaciente = new List<Paciente>() { pacienteTest };
 
             //Act
@@ -30,7 +30,7 @@ namespace TestUnitarios
         {
             //Arrange
             Clinica.listadoMedico.Clear();
-            Medico medicoTest = new Medico("Mario", "Fernandez", "11-1516-1417", "fernandezm@gmail.com", 25658987, Especialidad.Clínico);
+            Medico medicoTest = new Medico("Mario", "Fernandez", "114-151-1417", "fernandezm@gmail.com", 25658987, Especialidad.Clínico);
             List<Medico> listaMedicos = new List<Medico>() { medicoTest };
 
             //Act
@@ -48,8 +48,8 @@ namespace TestUnitarios
 
             //Arrange
             Clinica.listadoTurnos.Clear();
-            Medico medicoTest = new Medico("Mario", "Fernandez", "11-1516-1417", "fernandezm@gmail.com", 25658987, Especialidad.Clínico);
-            Paciente pacienteTest = new Paciente("Diego", "Gomez", "11-4567-1265", "gomezd@gmail.com", 45789456, Paciente.EObraSocial.PASTEUR);
+            Medico medicoTest = new Medico("Mario", "Fernandez", "114-151-1417", "fernandezm@gmail.com", 25658987, Especialidad.Clínico);
+            Paciente pacienteTest = new Paciente("Diego", "Gomez", "119-456-1265", "gomezd@gmail.com", 45789456, Paciente.EObraSocial.PASTEUR);
             DateTime fechaYHora = DateTime.Now.Date;
             Turno turnoTest = new Turno(fechaYHora, pacienteTest, medicoTest);
             List<Turno> listaMedicos = new List<Turno>() { turnoTest };

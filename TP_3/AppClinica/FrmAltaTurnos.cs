@@ -56,7 +56,7 @@ namespace AppClinica
             {
                 MessageBox.Show(ex.Message);
             }
-            catch (NoExisteException ex)
+            catch (NoEncontradoExcepcion ex)
             {
                 MessageBox.Show(ex.Message);
             }
