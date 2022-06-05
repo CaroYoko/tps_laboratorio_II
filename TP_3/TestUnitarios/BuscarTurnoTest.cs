@@ -12,6 +12,7 @@ namespace TestUnitarios
         public void BuscaTurno_CuandoHayFechaYDniDistintaDeCero_DevuelveListaFiltradaPorAmbosParametros()
         {
             //Arrange
+            Clinica.listadoTurnos.Clear();
             Medico medicoTest = new Medico("Mario", "Fernandez", "11-1516-1417", "fernandezm@gmail.com", 25658987, Especialidad.Clínico);
             Paciente pacienteTest = new Paciente("Diego", "Gomez", "11-4567-1265", "gomezd@gmail.com", 45789456, Paciente.EObraSocial.PASTEUR);
             DateTime fechaYHora = DateTime.Now.Date;
@@ -34,6 +35,7 @@ namespace TestUnitarios
         public void BuscaTurno_CuandoHayFechaYDniEsCero_DevuelveListaFiltradaPorAmbosParametros()
         {
             //Arrange
+            Clinica.listadoTurnos.Clear();
             Medico medicoTest = new Medico("Mario", "Fernandez", "11-1516-1417", "fernandezm@gmail.com", 25658987, Especialidad.Clínico);
             Paciente pacienteTest = new Paciente("Diego", "Gomez", "11-4567-1265", "gomezd@gmail.com", 45789456, Paciente.EObraSocial.PASTEUR);
             DateTime fechaYHora = DateTime.Now.Date;
@@ -43,7 +45,7 @@ namespace TestUnitarios
             List<Turno> actual = new List<Turno>();
 
             //Act
-            actual = Clinica.BuscarTurno(fechaYHora, 0);
+            actual = Clinica.BuscarTurno(fechaYHora);
 
             //Assert
             Assert.AreEqual(actual.Count, 1);

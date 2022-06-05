@@ -44,10 +44,11 @@ namespace Entidades
 
                 AgregarListado(auxLista);
             }
-            catch(NoEncontradoExcepcion ex) {
+            catch (NoEncontradoExcepcion ex)
+            {
 
                 throw ex;
-            
+
             }
 
 
@@ -55,25 +56,25 @@ namespace Entidades
 
 
         /// <summary>
-        /// Metodo generico que agrega a listado segun corresponda
+        /// Metodo generico que agrega al listado de la clinica
+        /// que corresponda segun su tipo de dato
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="lista"></param>
         public static void AgregarListado<T>(List<T> lista) where T : class, IListable
-        {
-            try {
-
+        {           
+            try
+            {
                 if (lista is not null)
                 {
                     foreach (T item in lista)
-                    {
+                    {                      
                         item.AgregarAListado();
                     }
                 }
-
             }
-            catch (NoEncontradoExcepcion ex) {
-
+            catch (NoEncontradoExcepcion ex)
+            {
                 throw ex;
             }
         }

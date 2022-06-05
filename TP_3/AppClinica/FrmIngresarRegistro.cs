@@ -116,7 +116,7 @@ namespace AppClinica
 
                     foreach (Turno turno in Clinica.BuscarTurno(DateTime.Now.Date))
                     {
-                        if (turno.IdTurno == auxId)
+                        if (turno.Id == auxId)
                         {
                             turno.EstadoTurno = (Turno.Estado)dg.Cells["Estado"].Value;
                         }

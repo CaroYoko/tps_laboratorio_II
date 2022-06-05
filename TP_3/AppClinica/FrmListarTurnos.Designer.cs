@@ -32,6 +32,7 @@
             this.btnExportar = new System.Windows.Forms.Button();
             this.rbJson = new System.Windows.Forms.RadioButton();
             this.rbXml = new System.Windows.Forms.RadioButton();
+            this.btnCancelarTurno = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgTurnos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,7 +43,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgTurnos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgTurnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgTurnos.Location = new System.Drawing.Point(32, 45);
+            this.dgTurnos.Location = new System.Drawing.Point(34, 51);
             this.dgTurnos.Name = "dgTurnos";
             this.dgTurnos.RowTemplate.Height = 25;
             this.dgTurnos.Size = new System.Drawing.Size(617, 327);
@@ -52,7 +53,7 @@
             // 
             this.btnExportar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExportar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnExportar.Location = new System.Drawing.Point(388, 393);
+            this.btnExportar.Location = new System.Drawing.Point(382, 12);
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(75, 23);
             this.btnExportar.TabIndex = 1;
@@ -65,7 +66,7 @@
             this.rbJson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.rbJson.AutoSize = true;
             this.rbJson.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.rbJson.Location = new System.Drawing.Point(217, 395);
+            this.rbJson.Location = new System.Drawing.Point(223, 16);
             this.rbJson.Name = "rbJson";
             this.rbJson.Size = new System.Drawing.Size(51, 19);
             this.rbJson.TabIndex = 2;
@@ -78,7 +79,7 @@
             this.rbXml.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.rbXml.AutoSize = true;
             this.rbXml.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.rbXml.Location = new System.Drawing.Point(300, 395);
+            this.rbXml.Location = new System.Drawing.Point(306, 16);
             this.rbXml.Name = "rbXml";
             this.rbXml.Size = new System.Drawing.Size(49, 19);
             this.rbXml.TabIndex = 3;
@@ -86,11 +87,22 @@
             this.rbXml.Text = ".Xml";
             this.rbXml.UseVisualStyleBackColor = true;
             // 
+            // btnCancelarTurno
+            // 
+            this.btnCancelarTurno.Location = new System.Drawing.Point(275, 401);
+            this.btnCancelarTurno.Name = "btnCancelarTurno";
+            this.btnCancelarTurno.Size = new System.Drawing.Size(129, 23);
+            this.btnCancelarTurno.TabIndex = 4;
+            this.btnCancelarTurno.Text = "Cancelar Turno";
+            this.btnCancelarTurno.UseVisualStyleBackColor = true;
+            this.btnCancelarTurno.Click += new System.EventHandler(this.btnCancelarTurno_Click);
+            // 
             // FrmListarTurnos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(680, 436);
+            this.Controls.Add(this.btnCancelarTurno);
             this.Controls.Add(this.rbXml);
             this.Controls.Add(this.rbJson);
             this.Controls.Add(this.btnExportar);
@@ -111,5 +123,6 @@
         private System.Windows.Forms.Button btnExportar;
         private System.Windows.Forms.RadioButton rbJson;
         private System.Windows.Forms.RadioButton rbXml;
+        private System.Windows.Forms.Button btnCancelarTurno;
     }
 }

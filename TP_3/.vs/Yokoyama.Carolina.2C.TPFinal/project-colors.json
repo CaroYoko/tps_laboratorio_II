@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "49dc19f1-287b-4c4e-8a6d-25583b8578cf": {
+      "ProjectGuid": "49dc19f1-287b-4c4e-8a6d-25583b8578cf",
+      "DisplayName": "Entidades",
+      "ColorIndex": 0
+    },
+    "73bc5881-def2-4632-8b74-226567f86431": {
+      "ProjectGuid": "73bc5881-def2-4632-8b74-226567f86431",
+      "DisplayName": "AppClinica",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

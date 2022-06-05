@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Entidades
@@ -14,34 +15,47 @@ namespace Entidades
         }
 
         static int ultimoIdTurno;
-        int idTurno;
+        int id;
         DateTime fechaYHora;
         Paciente paciente;
         Medico medico;
         Estado estadoTurno;
 
-        public Turno()
-        {
-            this.estadoTurno = Estado.Pendiente;
-            this.idTurno = Turno.ultimoIdTurno;
-            Turno.ultimoIdTurno++;
-        }
         static Turno()
         {
             Turno.ultimoIdTurno = 1;
         }
 
-        public Turno(DateTime fechaYHora, Paciente paciente, Medico medico) : this()
+        public Turno()
         {
+            this.estadoTurno = Estado.Pendiente;
+           
+        }
+
+        public Turno(DateTime fechaYHora, Paciente paciente, Medico medico) : this(Turno.ultimoIdTurno, fechaYHora, paciente, medico)
+        { 
+
+        }
+        
+        [JsonConstructor]
+        public Turno(int id, DateTime fechaYHora, Paciente paciente, Medico medico) : this()
+        {
+            this.id = id;        
             this.fechaYHora = fechaYHora;
             this.paciente = paciente;
-            this.medico = medico;            
+            this.medico = medico;
 
-        }             
+            if (Turno.ultimoIdTurno <= this.id)
+            {
+                Turno.ultimoIdTurno = this.id + 1;
+            }
 
-        public int IdTurno
+        }        
+
+        public int Id
         {
-            get { return this.idTurno; }
+            get { return this.id; }
+            set { this.id = value; }
         }
 
         public Paciente Paciente
@@ -67,7 +81,7 @@ namespace Entidades
             set { this.estadoTurno = value; }
         }
 
-       
+
 
         /// <summary>
         /// Valida si el medico tiene diponibilidad de atencion en un día y horario determinado
@@ -110,8 +124,9 @@ namespace Entidades
             Turno retorno = null;
             foreach (Turno turno in Clinica.listadoTurnos)
             {
-                if (turno.IdTurno == auxId) {
-                    retorno =  turno;
+                if (turno.Id == auxId)
+                {
+                    retorno = turno;
                 }
             }
             return retorno;
@@ -122,7 +137,8 @@ namespace Entidades
         /// </summary>
         /// <param name="estado"></param>
         /// <returns> Retrorn la lista filtrada</returns>
-        public static List<Turno> FiltrarPorEstado(Estado estado) {
+        public static List<Turno> FiltrarPorEstado(Estado estado)
+        {
 
             List<Turno> auxLista = new List<Turno>();
 
@@ -133,7 +149,8 @@ namespace Entidades
                     auxLista.Add(turno);
                 }
             }
-            if (estado == Turno.Estado.Todos) {
+            if (estado == Turno.Estado.Todos)
+            {
                 auxLista = Clinica.BuscarTurno(DateTime.Now.Date);
             }
 
@@ -156,6 +173,15 @@ namespace Entidades
             }
         }
 
+        public static bool BorrarTurno(Turno turnoSeleccion)
+        {
+            if (turnoSeleccion is not null)
+            {
+                Clinica.listadoTurnos.Remove(turnoSeleccion);
+                return true;
+            }
+            return false;
+        }
 
 
     }

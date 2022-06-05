@@ -30,6 +30,7 @@
         {
             this.dgPacientes = new System.Windows.Forms.DataGridView();
             this.btnExportar = new System.Windows.Forms.Button();
+            this.btnBorrar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgPacientes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -41,7 +42,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgPacientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgPacientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgPacientes.Location = new System.Drawing.Point(32, 38);
+            this.dgPacientes.Location = new System.Drawing.Point(37, 38);
             this.dgPacientes.Name = "dgPacientes";
             this.dgPacientes.RowTemplate.Height = 25;
             this.dgPacientes.Size = new System.Drawing.Size(824, 310);
@@ -50,13 +51,24 @@
             // btnExportar
             // 
             this.btnExportar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnExportar.Location = new System.Drawing.Point(341, 385);
+            this.btnExportar.Location = new System.Drawing.Point(498, 370);
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(197, 31);
             this.btnExportar.TabIndex = 1;
-            this.btnExportar.Text = "Exportar";
+            this.btnExportar.Text = "Exportar a .Json";
             this.btnExportar.UseVisualStyleBackColor = true;
             this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
+            // 
+            // btnBorrar
+            // 
+            this.btnBorrar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnBorrar.Location = new System.Drawing.Point(235, 370);
+            this.btnBorrar.Name = "btnBorrar";
+            this.btnBorrar.Size = new System.Drawing.Size(197, 31);
+            this.btnBorrar.TabIndex = 2;
+            this.btnBorrar.Text = "Borrar";
+            this.btnBorrar.UseVisualStyleBackColor = true;
+            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
             // 
             // FrmListarPacientes
             // 
@@ -65,6 +77,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(898, 436);
+            this.Controls.Add(this.btnBorrar);
             this.Controls.Add(this.btnExportar);
             this.Controls.Add(this.dgPacientes);
             this.Name = "FrmListarPacientes";
@@ -80,5 +93,6 @@
 
         private System.Windows.Forms.DataGridView dgPacientes;
         private System.Windows.Forms.Button btnExportar;
+        private System.Windows.Forms.Button btnBorrar;
     }
 }

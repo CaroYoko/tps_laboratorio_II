@@ -32,6 +32,21 @@ namespace AppClinica
             ArchivosJson<List<Paciente>>.Escribir(Clinica.listadoPacientes, "Pacientes_Exportado", Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
         }
 
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            ObtenerFila();
+
+            if (pacienteSeleccion is not null && MessageBox.Show("¿Esta seguro de eliminar el paciente?", "Eliminar", MessageBoxButtons.YesNo) == DialogResult.Yes && Paciente.BorrarPaciente(pacienteSeleccion))
+            {
+                dgPacientes.DataSource = null;
+                ActualizarDataGrid();
+            }
+            else {
+                MessageBox.Show("No ha seleccionado un cliente", "Error", MessageBoxButtons.OK);
+            }          
+
+        }
+
         /// <summary>
         /// Actualiza el Datagrid
         /// </summary>
@@ -39,6 +54,8 @@ namespace AppClinica
         {            
             dgPacientes.DataSource = Clinica.listadoPacientes;
             AjustarOrdenColumnas();
+
+            dgPacientes.Refresh();
 
         }
 
@@ -57,7 +74,7 @@ namespace AppClinica
         }
 
         /// <summary>
-        /// Obtiene el dato de la fila
+        /// Obtiene el dato de la fila seleccionada del Datagrid
         /// </summary>
         private void ObtenerFila()
         {
@@ -71,8 +88,12 @@ namespace AppClinica
                
                 FrmListarPacientes.pacienteSeleccion = Paciente.BuscarPacientePorId(auxId);
             }
+            else
+            {
+                FrmListarPacientes.pacienteSeleccion = null;
+            }
         }
 
-      
+        
     }
 }
