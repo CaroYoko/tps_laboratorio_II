@@ -41,16 +41,22 @@ namespace AppClinica
                 Paciente paciente = Paciente.BuscarPacientePorDNI(int.Parse(cbPacientes.Text));
 
                 DateTime fecha = Convert.ToDateTime(dpFechaTurno.Text);
-                DateTime hora = Convert.ToDateTime(cbHorario.SelectedItem);
-                DateTime fechaConvertida = fecha.AddHours(hora.Hour).AddMinutes(hora.Minute);
-
-                Turno turno = new Turno(fechaConvertida, paciente, medico);
-                turno.AgregarAListado();
-
-                if (MessageBox.Show("Agregado con éxito", "Turno", MessageBoxButtons.OK) == DialogResult.OK)
+                if (cbHorario.SelectedItem is not null)
                 {
-                    this.Close();
+                    DateTime hora = Convert.ToDateTime(cbHorario.SelectedItem);
+                    DateTime fechaConvertida = fecha.AddHours(hora.Hour).AddMinutes(hora.Minute);
+                    Turno turno = new Turno(fechaConvertida, paciente, medico);
+                    turno.AgregarAListado();
+
+                    if (MessageBox.Show("Agregado con éxito", "Turno", MessageBoxButtons.OK) == DialogResult.OK)
+                    {
+                        this.Close();
+                    }
                 }
+                else {
+                    MessageBox.Show("Seleccionar horario", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
             }
             catch (NoDisponibleException ex)
             {
