@@ -29,7 +29,16 @@ namespace AppClinica
 
         private void btnExportar_Click(object sender, EventArgs e)
         {
-            ArchivosJson<List<Paciente>>.Escribir(Clinica.listadoPacientes, "Pacientes_Exportado", Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
+            try
+            {
+                ArchivosJson<List<Paciente>>.Escribir(Clinica.listadoPacientes, "Pacientes_Exportado", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\");
+                MessageBox.Show(String.Format($"Archivo exportado con éxito\n\nUbicación: {Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\\Datos"), "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception) {
+
+                MessageBox.Show("Error a exportar el archivo");
+            }
         }
 
         private void btnBorrar_Click(object sender, EventArgs e)

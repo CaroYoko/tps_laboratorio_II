@@ -112,7 +112,7 @@ namespace AppClinica
             {
                 if (dg.Cells["Estado"].Value != null)
                 {
-                    int auxId = int.Parse(dg.Cells["IdTurno"].Value.ToString() ?? "");
+                    int auxId = int.Parse(dg.Cells["Id"].Value.ToString() ?? "");
 
                     foreach (Turno turno in Clinica.BuscarTurno(DateTime.Now.Date))
                     {

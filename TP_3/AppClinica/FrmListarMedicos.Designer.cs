@@ -52,7 +52,7 @@
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(197, 31);
             this.btnExportar.TabIndex = 2;
-            this.btnExportar.Text = "Exportar";
+            this.btnExportar.Text = "Exportar a .Json";
             this.btnExportar.UseVisualStyleBackColor = true;
             this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 

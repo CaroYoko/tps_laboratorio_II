@@ -30,11 +30,13 @@ namespace AppClinica
         {
             if (ObtenerExtension() == ETipoExtension.Json)
             {            
-                ArchivosJson<List<Turno>>.Escribir(Clinica.listadoTurnos, "Turnos",Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\");
+                ArchivosJson<List<Turno>>.Escribir(Clinica.listadoTurnos, "Turnos_Exportado",Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\");
             }
             else {
                 ArchivosXml<List<Turno>>.Escribir(Clinica.listadoTurnos, "Turnos");
             }
+
+            MessageBox.Show(String.Format($"Archivo exportado con éxito\n\nUbicación: {Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\\Datos"), "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                       
         }
 

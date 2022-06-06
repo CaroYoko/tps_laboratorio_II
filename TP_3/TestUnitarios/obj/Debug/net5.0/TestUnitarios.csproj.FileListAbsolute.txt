@@ -104,13 +104,13 @@ C:\Users\Carolina\source\repos\Yokoyama.Carolina.2C.TPFinal\TestUnitarios\obj\De
 C:\Users\Carolina\source\repos\Yokoyama.Carolina.2C.TPFinal\TestUnitarios\obj\Debug\net5.0\TestUnitarios.pdb
 C:\Users\Carolina\source\repos\Yokoyama.Carolina.2C.TPFinal\TestUnitarios\obj\Debug\net5.0\TestUnitarios.genruntimeconfig.cache
 C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_3\TestUnitarios\bin\Debug\net5.0\CoverletSourceRootsMapping
-C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_3\TestUnitarios\bin\Debug\net5.0\testhost.exe
 C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_3\TestUnitarios\bin\Debug\net5.0\testhost.dll
+C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_3\TestUnitarios\bin\Debug\net5.0\testhost.exe
+C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_3\TestUnitarios\bin\Debug\net5.0\Microsoft.TestPlatform.PlatformAbstractions.dll
 C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_3\TestUnitarios\bin\Debug\net5.0\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
 C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_3\TestUnitarios\bin\Debug\net5.0\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
 C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_3\TestUnitarios\bin\Debug\net5.0\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
 C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_3\TestUnitarios\bin\Debug\net5.0\Microsoft.TestPlatform.AdapterUtilities.dll
-C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_3\TestUnitarios\bin\Debug\net5.0\Microsoft.TestPlatform.PlatformAbstractions.dll
 C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_3\TestUnitarios\bin\Debug\net5.0\Datos\Medicos.json
 C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_3\TestUnitarios\bin\Debug\net5.0\Datos\Pacientes.json
 C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_3\TestUnitarios\bin\Debug\net5.0\Datos\Turnos.json

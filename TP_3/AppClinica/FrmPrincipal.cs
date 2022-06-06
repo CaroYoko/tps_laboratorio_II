@@ -83,6 +83,7 @@ namespace AppClinica
             FrmAltaTurnos frmAltaTurnos = new FrmAltaTurnos();
             this.Visible = false;
             frmAltaTurnos.ShowDialog();
+            ActualizarDataGrid();
             this.Visible = true;
         }
 

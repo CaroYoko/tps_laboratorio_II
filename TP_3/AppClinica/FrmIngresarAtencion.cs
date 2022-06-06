@@ -62,7 +62,7 @@ namespace AppClinica
                     turnoSeleccion.EstadoTurno = Turno.Estado.Atendido;
                 }
 
-                if (MessageBox.Show("Registro exitoso", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
+                if (MessageBox.Show("Atención exitosa", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
                 {
                     this.Close();
                 }
@@ -99,7 +99,7 @@ namespace AppClinica
             if (indiceFila >= 0)
             {
                 DataGridViewRow fila = dgPacientes.Rows[indiceFila];
-                int auxId = int.Parse(fila.Cells["IdTurno"].Value.ToString() ?? "");
+                int auxId = int.Parse(fila.Cells["Id"].Value.ToString() ?? "");
 
                 FrmIngresarAtencion.turnoSeleccion = Turno.BuscarTurnoPorId(auxId);
             }            
