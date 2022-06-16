@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Carolina\\Desktop\\TP4\\LaboCaro\\TP_4\\AppClinica\\AppClinica.csproj": {}
+    "C:\\Users\\Carolina\\Desktop\\tps_laboratorio_II\\TP_4\\AppClinica\\AppClinica.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Carolina\\Desktop\\TP4\\LaboCaro\\TP_4\\AppClinica\\AppClinica.csproj": {
+    "C:\\Users\\Carolina\\Desktop\\tps_laboratorio_II\\TP_4\\AppClinica\\AppClinica.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Carolina\\Desktop\\TP4\\LaboCaro\\TP_4\\AppClinica\\AppClinica.csproj",
+        "projectUniqueName": "C:\\Users\\Carolina\\Desktop\\tps_laboratorio_II\\TP_4\\AppClinica\\AppClinica.csproj",
         "projectName": "AppClinica",
-        "projectPath": "C:\\Users\\Carolina\\Desktop\\TP4\\LaboCaro\\TP_4\\AppClinica\\AppClinica.csproj",
+        "projectPath": "C:\\Users\\Carolina\\Desktop\\tps_laboratorio_II\\TP_4\\AppClinica\\AppClinica.csproj",
         "packagesPath": "C:\\Users\\Carolina\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Carolina\\Desktop\\TP4\\LaboCaro\\TP_4\\AppClinica\\obj\\",
+        "outputPath": "C:\\Users\\Carolina\\Desktop\\tps_laboratorio_II\\TP_4\\AppClinica\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net5.0-windows7.0": {
             "targetAlias": "net5.0-windows",
             "projectReferences": {
-              "C:\\Users\\Carolina\\Desktop\\TP4\\LaboCaro\\TP_4\\Entidades\\Entidades.csproj": {
-                "projectPath": "C:\\Users\\Carolina\\Desktop\\TP4\\LaboCaro\\TP_4\\Entidades\\Entidades.csproj"
+              "C:\\Users\\Carolina\\Desktop\\tps_laboratorio_II\\TP_4\\Entidades\\Entidades.csproj": {
+                "projectPath": "C:\\Users\\Carolina\\Desktop\\tps_laboratorio_II\\TP_4\\Entidades\\Entidades.csproj"
               }
             }
           }
@@ -81,14 +81,14 @@
         }
       }
     },
-    "C:\\Users\\Carolina\\Desktop\\TP4\\LaboCaro\\TP_4\\Entidades\\Entidades.csproj": {
+    "C:\\Users\\Carolina\\Desktop\\tps_laboratorio_II\\TP_4\\Entidades\\Entidades.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Carolina\\Desktop\\TP4\\LaboCaro\\TP_4\\Entidades\\Entidades.csproj",
+        "projectUniqueName": "C:\\Users\\Carolina\\Desktop\\tps_laboratorio_II\\TP_4\\Entidades\\Entidades.csproj",
         "projectName": "Entidades",
-        "projectPath": "C:\\Users\\Carolina\\Desktop\\TP4\\LaboCaro\\TP_4\\Entidades\\Entidades.csproj",
+        "projectPath": "C:\\Users\\Carolina\\Desktop\\tps_laboratorio_II\\TP_4\\Entidades\\Entidades.csproj",
         "packagesPath": "C:\\Users\\Carolina\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Carolina\\Desktop\\TP4\\LaboCaro\\TP_4\\Entidades\\obj\\",
+        "outputPath": "C:\\Users\\Carolina\\Desktop\\tps_laboratorio_II\\TP_4\\Entidades\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

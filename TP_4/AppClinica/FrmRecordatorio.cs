@@ -46,14 +46,29 @@ namespace AppClinica
             });
         }
 
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            source.Cancel();
+            ReiniciarEnvioDeRecordatorio();
+        }
+
+        /// <summary>
+        /// Informa a través de una alerta que se ha enviado el recordatorio
+        /// Este método se suscribe en el delegado notificacionFin
+        /// </summary>
         private void MostrarAlertaFin()
         {
             MessageBox.Show("Recordatorios enviados", "Éxito", MessageBoxButtons.OK);
         }
 
+        /// <summary>
+        /// Envia los recordatorios a los turnos del día siguiente
+        /// Hará avanzar la barra de progreso al menos que se presione el boton cancelar.       
+        /// Seteará propiedad recordatorioNotificado de los turnos afectados en true
+        /// </summary>
+        /// <param name="token"></param>
         private void EnvioRecordatorios(CancellationToken token)
         {
-
             while (pbRecordatorio.Value < 100)
             {
                 if (token.IsCancellationRequested)
@@ -70,12 +85,15 @@ namespace AppClinica
             if (ActualizarTablas is not null)
             {
                 ActualizarTablas.Invoke();
-
             }
             notificacionFin.Invoke();
 
         }
 
+        /// <summary>
+        /// Setea el valor de la barra de progreso en 0
+        /// Este metodo se suscribe en el delegado notificarFin
+        /// </summary>
         private void ReiniciarEnvioDeRecordatorio()
         {
             if (this.InvokeRequired)
@@ -90,6 +108,9 @@ namespace AppClinica
             }
         }
 
+        /// <summary>
+        /// Setea el estado de la barra de progreso de 10 en 10
+        /// </summary>
         private void seteoEstadoRecordatorio()
         {
 
@@ -104,10 +125,5 @@ namespace AppClinica
             }
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            source.Cancel();
-            ReiniciarEnvioDeRecordatorio();
-        }
     }
 }

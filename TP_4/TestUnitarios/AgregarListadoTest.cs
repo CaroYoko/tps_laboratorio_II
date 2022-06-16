@@ -14,6 +14,7 @@ namespace TestUnitarios
         {
             //Arrange
             PacienteDAO pacienteDAO = new PacienteDAO();
+            pacienteDAO.EliminarPorDNI(45789456);
 
             Paciente pacienteTest = new Paciente("Diego", "Gomez", "119-456-1265", "gomezd@gmail.com", 45789456, Paciente.EObraSocial.PASTEUR);
 
@@ -26,7 +27,8 @@ namespace TestUnitarios
 
             //Assert            
             Assert.AreEqual(Clinica.ListadoPacientes.Count, cantidadPacientes);
-            
+
+            //Elimino lo creado
             pacienteDAO.EliminarPorDNI(45789456);
 
         }
@@ -36,6 +38,7 @@ namespace TestUnitarios
         {
             //Arrange
             MedicoDAO medicoDAO = new MedicoDAO();
+            medicoDAO.EliminarPorDNI(25658987);
 
             Medico medicoTest = new Medico("Mario", "Fernandez", "114-151-1417", "fernandezm@gmail.com", 25658987, Especialidad.Clínico);
 
@@ -46,7 +49,9 @@ namespace TestUnitarios
             listaMedicos.AgregarListado();
 
             //Assert
-            Assert.AreEqual(Clinica.ListadoMedicos.Count, cantidadMedicos);           
+            Assert.AreEqual(Clinica.ListadoMedicos.Count, cantidadMedicos);
+
+            //Elimino lo creado
             medicoDAO.EliminarPorDNI(25658987);
 
         }
@@ -70,14 +75,15 @@ namespace TestUnitarios
             List<Turno> listaTurnos = new List<Turno>() { turnoTest };
 
             int cantidadTurnos = Clinica.ListadoTurnos.Count + 1;
+
             //Act
             listaTurnos.AgregarListado();
 
             //Assert
             Assert.AreEqual(Clinica.ListadoTurnos.Count, cantidadTurnos);
 
-            int idPaciente = pacienteTest.Id;
-            turnoDAO.EliminarPorIdPaciente(idPaciente);
+            //Elimino lo creado           
+            turnoDAO.EliminarPorIdPaciente(pacienteTest.Id);
             medicoDAO.EliminarPorDNI(25658987);
             pacienteDAO.EliminarPorDNI(45789456);
         }

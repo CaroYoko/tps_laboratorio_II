@@ -73,7 +73,6 @@ namespace AppClinica
 
         }
 
-
         /// <summary>
         /// Actualiza el Datagrid 
         /// </summary>
@@ -82,10 +81,10 @@ namespace AppClinica
             dgPacientes.DataSource = Turno.FiltrarPorEstado(Turno.Estado.Pendiente);
             dgPacientes.Columns.Add(CrearComboBoxDeEstado());
             dgPacientes.Columns["EstadoTurno"].Visible = false;
-          
+
         }
 
-        
+
         /// <summary>
         /// Crea la columna del datagrid con combobox cargado con los estados 
         /// </summary>
@@ -102,7 +101,7 @@ namespace AppClinica
 
 
         /// <summary>
-        /// Cambia el estado del turno seun lo cargado en el combobox
+        /// Cambia el estado del turno segun lo cargado en el combobox
         /// </summary>
         /// <exception cref="ListaVaciaException"></exception>
         private void CambiarEstados()
@@ -131,12 +130,5 @@ namespace AppClinica
             }
 
         }
-
-       
-
-
-
-
-
     }
 }

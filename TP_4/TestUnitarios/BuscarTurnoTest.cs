@@ -15,7 +15,7 @@ namespace TestUnitarios
             TurnoDAO turnoDAO = new TurnoDAO();
             MedicoDAO medicoDAO = new MedicoDAO(); 
             PacienteDAO pacienteDAO = new PacienteDAO();
-        
+
             Medico medicoTest = new Medico("Mario", "Fernandez", "114-151-1417", "fernandezm@gmail.com", 25658987, Especialidad.Clínico);
             medicoDAO.Guardar(medicoTest);
 
@@ -23,19 +23,19 @@ namespace TestUnitarios
             pacienteDAO.Guardar(pacienteTest);
 
             DateTime fechaYHora = DateTime.Now.Date;
+            
             Turno turnoTest = new Turno(fechaYHora, Paciente.BuscarPacientePorDNI(45789456), Medico.BuscarMedicoPorNombreYApellido("Mario Fernandez"));
             
-            turnoTest.AgregarAListado();
+            turnoTest.AgregarAListado();            
 
             //Act
             List<Turno> actual = Clinica.BuscarTurno(fechaYHora, 45789456);
 
             //Assert
-
             Assert.AreEqual(actual.Count, 1);
 
-            int idPaciente = pacienteTest.Id;
-            turnoDAO.EliminarPorIdPaciente(idPaciente);
+            //Elimino lo creado
+            turnoDAO.EliminarPorIdPaciente(pacienteTest.Id);
             medicoDAO.EliminarPorDNI(25658987);
             pacienteDAO.EliminarPorDNI(45789456);
         }
@@ -46,20 +46,16 @@ namespace TestUnitarios
             //Arrange
             TurnoDAO turnoDAO = new TurnoDAO();
             MedicoDAO medicoDAO = new MedicoDAO();
-            PacienteDAO pacienteDAO = new PacienteDAO();
-
-            medicoDAO.EliminarPorDNI(25658987);
-            pacienteDAO.EliminarPorDNI(45789456);
+            PacienteDAO pacienteDAO = new PacienteDAO();            
 
             Medico medicoTest = new Medico("Mario", "Fernandez", "114-151-1417", "fernandezm@gmail.com", 25658987, Especialidad.Clínico);
             medicoDAO.Guardar(medicoTest);
 
-            Paciente pacienteTest = new Paciente("Diego", "Gomez", "119-456-1265", "gomezd@gmail.com", 45789456, Paciente.EObraSocial.PASTEUR);
-            int idPaciente = pacienteTest.Id;
-            turnoDAO.EliminarPorIdPaciente(idPaciente);
+            Paciente pacienteTest = new Paciente("Diego", "Gomez", "119-456-1265", "gomezd@gmail.com", 45789456, Paciente.EObraSocial.PASTEUR);       
             pacienteDAO.Guardar(pacienteTest);
 
-            DateTime fechaYHora = DateTime.Now.Date;
+            DateTime fechaYHora = new DateTime(2022, 06, 16);
+            
             Turno turnoTest = new Turno(fechaYHora, Paciente.BuscarPacientePorDNI(45789456), Medico.BuscarMedicoPorNombreYApellido("Mario Fernandez"));
 
             turnoTest.AgregarAListado();
@@ -69,9 +65,10 @@ namespace TestUnitarios
 
 
             //Assert
-            Assert.AreEqual(actual.Count, 2);
-                     
-            turnoDAO.EliminarPorIdPaciente(idPaciente);
+            Assert.AreEqual(actual.Count, 1);
+            
+            //Elimino lo creado
+            turnoDAO.EliminarPorIdPaciente(pacienteTest.Id);
             medicoDAO.EliminarPorDNI(25658987);
             pacienteDAO.EliminarPorDNI(45789456);
 

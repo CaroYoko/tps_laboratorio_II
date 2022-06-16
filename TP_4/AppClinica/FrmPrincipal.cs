@@ -13,26 +13,14 @@ namespace AppClinica
 {
     public partial class FrmPrincipal : Form
     {
-
         public FrmPrincipal()
         {
             InitializeComponent();
         }
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            try
-            {                
-                cbFiltrado.DataSource = Enum.GetValues(typeof(Turno.Estado));
-                               
-                this.ActualizarDataGrid();
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-            
+            cbFiltrado.DataSource = Enum.GetValues(typeof(Turno.Estado));
+            this.ActualizarDataGrid();
         }
 
         private void altaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -96,14 +84,15 @@ namespace AppClinica
 
         private void atenderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try { 
-            
+            try
+            {
                 FrmIngresarAtencion frmAtenderPaciente = new FrmIngresarAtencion();
                 this.Visible = false;
                 frmAtenderPaciente.ShowDialog();
                 this.ActualizarDataGrid();
                 this.Visible = true;
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -118,7 +107,7 @@ namespace AppClinica
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -140,36 +129,6 @@ namespace AppClinica
 
         }
 
-        /// <summary>
-        /// Actualiza el Datagrid
-        /// </summary>
-        public void ActualizarDataGrid()
-        {
-            try
-            {
-
-                if (dgTurnosHoy.InvokeRequired)
-                {
-                    Action action = ActualizarDataGrid;
-                    dgTurnosHoy.Invoke(action);
-                }
-                else
-                {
-                    dgTurnosHoy.DataSource = Turno.FiltrarPorEstado((Turno.Estado)cbFiltrado.SelectedItem);
-                    dgTurnosHoy.Refresh();
-                    dgTurnosHoy.Columns[5].ReadOnly = true;
-                }
-
-            }
-            catch (ErrorLecturaException ex)
-            {
-
-                throw ex;
-            }
-
-        }
-
-
         private void enviarRecordatoriosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Task tarea = Task.Run(() =>
@@ -179,6 +138,24 @@ namespace AppClinica
                 frmRecordatorio.ShowDialog();
             });
 
+        }
+
+        /// <summary>
+        /// Actualiza el Datagrid
+        /// </summary>
+        public void ActualizarDataGrid()
+        {
+            if (dgTurnosHoy.InvokeRequired)
+            {
+                Action action = ActualizarDataGrid;
+                dgTurnosHoy.Invoke(action);
+            }
+            else
+            {
+                dgTurnosHoy.DataSource = Turno.FiltrarPorEstado((Turno.Estado)cbFiltrado.SelectedItem);
+                dgTurnosHoy.Refresh();
+                dgTurnosHoy.Columns[5].ReadOnly = true;
+            }
 
         }
     }

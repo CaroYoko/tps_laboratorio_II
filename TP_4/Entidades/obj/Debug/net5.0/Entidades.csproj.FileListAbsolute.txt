@@ -43,21 +43,6 @@ C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_3\Entidades\obj\Debug\net5.0\Ent
 C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_3\Entidades\obj\Debug\net5.0\Entidades.dll
 C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_3\Entidades\obj\Debug\net5.0\ref\Entidades.dll
 C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_3\Entidades\obj\Debug\net5.0\Entidades.pdb
-C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_4\Entidades\bin\Debug\net5.0\Datos\Medicos.json
-C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_4\Entidades\bin\Debug\net5.0\Datos\Pacientes.json
-C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_4\Entidades\bin\Debug\net5.0\Datos\Turnos.json
-C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_4\Entidades\bin\Debug\net5.0\Entidades.deps.json
-C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_4\Entidades\bin\Debug\net5.0\Entidades.dll
-C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_4\Entidades\bin\Debug\net5.0\ref\Entidades.dll
-C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_4\Entidades\bin\Debug\net5.0\Entidades.pdb
-C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_4\Entidades\obj\Debug\net5.0\Entidades.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_4\Entidades\obj\Debug\net5.0\Entidades.AssemblyInfoInputs.cache
-C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_4\Entidades\obj\Debug\net5.0\Entidades.AssemblyInfo.cs
-C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_4\Entidades\obj\Debug\net5.0\Entidades.csproj.CoreCompileInputs.cache
-C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_4\Entidades\obj\Debug\net5.0\Entidades.dll
-C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_4\Entidades\obj\Debug\net5.0\ref\Entidades.dll
-C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_4\Entidades\obj\Debug\net5.0\Entidades.pdb
-C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_4\Entidades\obj\Debug\net5.0\Entidades.csproj.AssemblyReference.cache
 C:\Users\EGY96\OneDrive\Escritorio\Caro TP\tps_laboratorio_II\TP_4\Entidades\bin\Debug\net5.0\Datos\Medicos.json
 C:\Users\EGY96\OneDrive\Escritorio\Caro TP\tps_laboratorio_II\TP_4\Entidades\bin\Debug\net5.0\Datos\Pacientes.json
 C:\Users\EGY96\OneDrive\Escritorio\Caro TP\tps_laboratorio_II\TP_4\Entidades\bin\Debug\net5.0\Datos\Turnos.json
@@ -88,3 +73,17 @@ C:\Users\Carolina\Desktop\TP4\LaboCaro\TP_4\Entidades\obj\Debug\net5.0\Entidades
 C:\Users\Carolina\Desktop\TP4\LaboCaro\TP_4\Entidades\obj\Debug\net5.0\Entidades.dll
 C:\Users\Carolina\Desktop\TP4\LaboCaro\TP_4\Entidades\obj\Debug\net5.0\ref\Entidades.dll
 C:\Users\Carolina\Desktop\TP4\LaboCaro\TP_4\Entidades\obj\Debug\net5.0\Entidades.pdb
+C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_4\Entidades\bin\Debug\net5.0\Datos\Medicos.json
+C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_4\Entidades\bin\Debug\net5.0\Datos\Pacientes.json
+C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_4\Entidades\bin\Debug\net5.0\Datos\Turnos.json
+C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_4\Entidades\bin\Debug\net5.0\Entidades.deps.json
+C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_4\Entidades\bin\Debug\net5.0\Entidades.dll
+C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_4\Entidades\bin\Debug\net5.0\ref\Entidades.dll
+C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_4\Entidades\bin\Debug\net5.0\Entidades.pdb
+C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_4\Entidades\obj\Debug\net5.0\Entidades.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_4\Entidades\obj\Debug\net5.0\Entidades.AssemblyInfoInputs.cache
+C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_4\Entidades\obj\Debug\net5.0\Entidades.AssemblyInfo.cs
+C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_4\Entidades\obj\Debug\net5.0\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_4\Entidades\obj\Debug\net5.0\Entidades.dll
+C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_4\Entidades\obj\Debug\net5.0\ref\Entidades.dll
+C:\Users\Carolina\Desktop\tps_laboratorio_II\TP_4\Entidades\obj\Debug\net5.0\Entidades.pdb

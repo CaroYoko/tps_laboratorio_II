@@ -38,7 +38,7 @@ namespace AppClinica
             }
             catch (ErrorEscrituraException ex) {
 
-                MessageBox.Show(ex.Message, "Error");
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -103,7 +103,6 @@ namespace AppClinica
                 FrmListarPacientes.pacienteSeleccion = null;
             }
         }
-
         
     }
 }

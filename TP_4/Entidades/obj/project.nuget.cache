@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YZ9M+0JSJD8FPafWB4lVu6RUneoYUNla0JAtcUNcQDq74ertz6wMzJkcxkDQQBGsfMOxHGcnGN5xeFALpirlkw==",
+  "dgSpecHash": "Zg17s3JzrfToQ+TLYyk8hBhqzqIM77u6PCONb8cPA15ZnhL2mOxjPO8p/j1svYf9eIpXNaB7fo5NsNcoVYOPfQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Carolina\\Desktop\\TP4\\LaboCaro\\TP_4\\Entidades\\Entidades.csproj",
+  "projectFilePath": "C:\\Users\\Carolina\\Desktop\\tps_laboratorio_II\\TP_4\\Entidades\\Entidades.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Carolina\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Carolina\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

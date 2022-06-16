@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zxnWrDrTvCkK63cTT8hMxWqgpeBROIKQslRI/JseU4Onpfp3C8SCTm9Ci9EOcAbOJiDTGqd74sYtzE8zEGhYaw==",
+  "dgSpecHash": "bzRhAoYtg+LK71EUJeLtEkOrgbCnttgychXPnotTmcsw9S5jYcxImsHlGA9SK99voqBdRzSokmEixvCen23BAw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Carolina\\Desktop\\TP4\\LaboCaro\\TP_4\\TestUnitarios\\TestUnitarios.csproj",
+  "projectFilePath": "C:\\Users\\Carolina\\Desktop\\tps_laboratorio_II\\TP_4\\TestUnitarios\\TestUnitarios.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Carolina\\.nuget\\packages\\coverlet.collector\\3.1.0\\coverlet.collector.3.1.0.nupkg.sha512",
     "C:\\Users\\Carolina\\.nuget\\packages\\microsoft.codecoverage\\16.11.0\\microsoft.codecoverage.16.11.0.nupkg.sha512",

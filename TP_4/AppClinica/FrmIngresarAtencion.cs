@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Entidades;
 
 namespace AppClinica
 {
@@ -36,7 +36,7 @@ namespace AppClinica
             ActualizarDataGrid();
 
         }
-               
+
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             int dni;
@@ -102,10 +102,10 @@ namespace AppClinica
                 int auxId = int.Parse(fila.Cells["Id"].Value.ToString() ?? "");
 
                 FrmIngresarAtencion.turnoSeleccion = Turno.BuscarTurnoPorId(auxId);
-            }            
+            }
 
-        }       
-               
-       
+        }
+
+
     }
 }

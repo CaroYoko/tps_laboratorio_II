@@ -13,11 +13,10 @@ namespace AppClinica
 {
     public partial class FrmAltaPacientes : Form
     {
-        PacienteDAO pacienteDAO;
+       
         public FrmAltaPacientes()
         {
-            InitializeComponent();
-            pacienteDAO = new PacienteDAO();
+            InitializeComponent();            
             cbObraSocial.DataSource = Enum.GetValues(typeof(Paciente.EObraSocial));
         }
 
@@ -31,8 +30,7 @@ namespace AppClinica
                 {
 
                     Paciente paciente = new Paciente(txtNombre.Text, txtApellido.Text, txtCelular.Text, txtEmail.Text, auxDni, (Paciente.EObraSocial)cbObraSocial.SelectedItem);
-                    paciente.AgregarAListado();
-                    pacienteDAO.Guardar(paciente);
+                    paciente.AgregarAListado();                    
                     this.Close();
                 }
                 else {
@@ -49,6 +47,9 @@ namespace AppClinica
             }
         }
 
+        /// <summary>
+        /// Setea los textBox con un string vacío
+        /// </summary>
         private void LimpiarTextBox() {
            
             txtNombre.Text = "";

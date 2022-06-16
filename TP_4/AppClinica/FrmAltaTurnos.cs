@@ -29,9 +29,8 @@ namespace AppClinica
 
             cbHorario.DataSource = horarios;
             cbHorario.SelectedIndex = -1;
-            
+
             cbMedicos.SelectedIndex = -1;
-            //cbEspecialidad.SelectedIndex = -1;
 
         }
 
@@ -55,7 +54,8 @@ namespace AppClinica
                         this.Close();
                     }
                 }
-                else {
+                else
+                {
                     MessageBox.Show("Seleccionar horario", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
@@ -77,15 +77,35 @@ namespace AppClinica
 
         private void cbHorario_Click(object sender, EventArgs e)
         {
-            try {
+            try
+            {
                 cbHorario.DataSource = CalcularHorarioDisponible();
-
             }
-            catch (ErrorLecturaException ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }              
+
+        private void cbEspecialidad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarComboboxMedico(ActualizarComboBoxMedicos());
+        }
+
+        private void cbPacientes_Validated(object sender, EventArgs e)
+        {
+            int dniPaciente;
+            if (cbPacientes is not null && int.TryParse(cbPacientes.Text, out dniPaciente))
+            {
+                txtPaciente.Text = Paciente.BuscarPacientePorDNI(dniPaciente).ToString();
             }
         }
 
+        private void cbEspecialidad_Enter(object sender, EventArgs e)
+        {
+            CargarComboboxMedico(ActualizarComboBoxMedicos());
+
+        }
 
         /// <summary>
         /// Calcula el horario disponible del medico a partir del día elegido
@@ -128,13 +148,12 @@ namespace AppClinica
         }
 
         /// <summary>
-        /// Actualiza los comboBox con DNI de medicos según la especialidad elegida
+        /// Actualiza los comboBox con el nombre de medicos según la especialidad elegida
         /// </summary>
         /// <returns>lista de medicos</returns>
         private List<Medico> ActualizarComboBoxMedicos()
-        {                      
+        {
             return Medico.FiltrarMedicoPorEspecialidad((Especialidad)cbEspecialidad.SelectedItem);
-
         }
 
         /// <summary>
@@ -144,11 +163,10 @@ namespace AppClinica
         private void CargarComboboxMedico(List<Medico> lista)
         {
             cbMedicos.DataSource = lista;
-
         }
-        
+
         /// <summary>
-        /// Carga el comboBoc de pacientes con todos los pacientes de la lista
+        /// Carga el comboBox de pacientes con todos los pacientes de la lista
         /// </summary>
         private void CargarComboBoxPaciente()
         {
@@ -160,29 +178,7 @@ namespace AppClinica
 
             cbPacientes.AutoCompleteCustomSource = stringColPaciente;
             cbPacientes.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            cbPacientes.AutoCompleteMode = AutoCompleteMode.SuggestAppend;                     
-
-
-        }
-
-        private void cbEspecialidad_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            CargarComboboxMedico(ActualizarComboBoxMedicos());
-        }        
-                
-        private void cbPacientes_Validated(object sender, EventArgs e)
-        {
-            int dniPaciente;
-            if (cbPacientes is not null && int.TryParse(cbPacientes.Text, out dniPaciente))
-            {
-                txtPaciente.Text = Paciente.BuscarPacientePorDNI(dniPaciente).ToString();
-            }
-
-        }
-
-        private void cbEspecialidad_Enter(object sender, EventArgs e)
-        {
-            CargarComboboxMedico(ActualizarComboBoxMedicos());
+            cbPacientes.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
 
         }
     }
