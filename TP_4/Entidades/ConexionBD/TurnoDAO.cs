@@ -35,7 +35,7 @@ namespace Entidades
             {
                 connection.Open();
 
-                string query = "INSERT INTO Turnos (id_Medico,id_Paciente,fecha_Hora) VALUES (@id_Medico, @id_Paciente, @fecha_Hora)";
+                string query = "INSERT INTO Turnos (id_Medico,id_Paciente,fecha_Hora, recordatorioNotificado) VALUES (@id_Medico, @id_Paciente, @fecha_Hora, @recordatorioNotificado)";
 
                 command.CommandText = query;
 
@@ -43,6 +43,7 @@ namespace Entidades
                 command.Parameters.AddWithValue("id_Medico", turno.Medico.Id);
                 command.Parameters.AddWithValue("id_Paciente", turno.Paciente.Id);
                 command.Parameters.AddWithValue("fecha_Hora", turno.FechaYHora);
+                command.Parameters.AddWithValue("recordatorioNotificado", turno.RecordatorioNotificado);
 
                 command.ExecuteNonQuery();
             }
@@ -58,6 +59,38 @@ namespace Entidades
                 }
             }
         }
+
+
+        public void ActualizarRecordatorio(Turno turno) {
+
+            try {             
+            
+                connection.Open();
+
+                string query = "UPDATE Turnos SET recordatorioNotificado = @recordatorioNotificado WHERE id_Turno = @id_Turno";
+
+                command.CommandText = query;
+
+                command.Parameters.Clear();
+                command.Parameters.AddWithValue("id_Turno", turno.Id);
+                command.Parameters.AddWithValue("recordatorioNotificado", turno.RecordatorioNotificado);
+
+                command.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (connection is not null && connection.State == System.Data.ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+
+        }
+
         public List<Turno> Leer()
         {
             List<Turno> lista = new List<Turno>();
@@ -75,8 +108,9 @@ namespace Entidades
                     int medico = dataReader.GetInt32(1);
                     int paciente = dataReader.GetInt32(2);
                     DateTime fecha_hora = dataReader.GetDateTime(3);
+                    int recordatorioNotificado = dataReader.GetInt32(4);
 
-                    Turno turno = new Turno(id, fecha_hora, Paciente.BuscarPacientePorId(paciente), Medico.BuscarMedicoPorId(medico));
+                    Turno turno = new Turno(id, fecha_hora, Paciente.BuscarPacientePorId(paciente), Medico.BuscarMedicoPorId(medico), recordatorioNotificado == 1 ? true : false);
 
                     lista.Add(turno);
                 }
@@ -86,7 +120,7 @@ namespace Entidades
             catch (Exception)
             {
 
-                throw;
+                throw new ErrorLecturaException("No se ha encontrado la base de datos. Revise si ejecutó el script y reinicie");
             }
             finally
             {
@@ -127,6 +161,34 @@ namespace Entidades
             }
         }
 
+        public void EliminarPorIdPaciente(int idPaciente)
+        {
+            try
+            {
+                string query = "DELETE FROM Turnos WHERE id_Paciente = @idBuscado";
+
+                connection.Open();
+
+                command.CommandText = query;
+
+                command.Parameters.Clear();
+                command.Parameters.AddWithValue("idBuscado", idPaciente);
+
+                command.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                if (connection is not null && connection.State == System.Data.ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+        }
 
     }
 }

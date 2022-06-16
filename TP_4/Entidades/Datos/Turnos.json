@@ -20,7 +20,8 @@
       "Dni": 30820684
     },
     "FechaYHora": "2022-06-07T09:00:00",
-    "EstadoTurno": 0
+    "EstadoTurno": 0,
+    "RecordatorioNotificado": false
   },
   {
     "Id": 2,
@@ -43,7 +44,8 @@
       "Dni": 21603202
     },
     "FechaYHora": "2022-06-07T09:15:00",
-    "EstadoTurno": 0
+    "EstadoTurno": 0,
+    "RecordatorioNotificado": false
   },
   {
     "Id": 3,
@@ -66,7 +68,8 @@
       "Dni": 21603202
     },
     "FechaYHora": "2022-06-08T09:15:00",
-    "EstadoTurno": 0
+    "EstadoTurno": 0,
+    "RecordatorioNotificado": false
   },
   {
     "Id": 4,
@@ -89,7 +92,8 @@
       "Dni": 21603202
     },
     "FechaYHora": "2022-06-08T10:00:00",
-    "EstadoTurno": 0
+    "EstadoTurno": 0,
+    "RecordatorioNotificado": false
   },
   {
     "Id": 5,
@@ -112,7 +116,8 @@
       "Dni": 21603202
     },
     "FechaYHora": "2022-06-08T11:00:00",
-    "EstadoTurno": 0
+    "EstadoTurno": 0,
+    "RecordatorioNotificado": false
   },
   {
     "Id": 6,
@@ -135,7 +140,8 @@
       "Dni": 22723088
     },
     "FechaYHora": "2022-06-08T11:00:00",
-    "EstadoTurno": 0
+    "EstadoTurno": 0,
+    "RecordatorioNotificado": false
   },
   {
     "Id": 7,
@@ -158,7 +164,8 @@
       "Dni": 23342028
     },
     "FechaYHora": "2022-06-07T09:45:00",
-    "EstadoTurno": 0
+    "EstadoTurno": 0,
+    "RecordatorioNotificado": false
   },
   {
     "Id": 8,
@@ -181,7 +188,8 @@
       "Dni": 21603202
     },
     "FechaYHora": "2022-06-07T10:00:00",
-    "EstadoTurno": 0
+    "EstadoTurno": 0,
+    "RecordatorioNotificado": false
   },
   {
     "Id": 9,
@@ -204,7 +212,8 @@
       "Dni": 22723088
     },
     "FechaYHora": "2022-06-09T10:00:00",
-    "EstadoTurno": 0
+    "EstadoTurno": 0,
+    "RecordatorioNotificado": false
   },
   {
     "Id": 10,
@@ -227,7 +236,8 @@
       "Dni": 21827307
     },
     "FechaYHora": "2022-06-09T09:15:00",
-    "EstadoTurno": 0
+    "EstadoTurno": 0,
+    "RecordatorioNotificado": false
   },
   {
     "Id": 11,
@@ -250,7 +260,8 @@
       "Dni": 23342028
     },
     "FechaYHora": "2022-06-09T10:00:00",
-    "EstadoTurno": 0
+    "EstadoTurno": 0,
+    "RecordatorioNotificado": false
   },
   {
     "Id": 12,
@@ -273,7 +284,8 @@
       "Dni": 35206863
     },
     "FechaYHora": "2022-06-10T10:30:00",
-    "EstadoTurno": 0
+    "EstadoTurno": 0,
+    "RecordatorioNotificado": false
   },
   {
     "Id": 13,
@@ -296,7 +308,8 @@
       "Dni": 26431656
     },
     "FechaYHora": "2022-06-10T09:15:00",
-    "EstadoTurno": 0
+    "EstadoTurno": 0,
+    "RecordatorioNotificado": false
   },
   {
     "Id": 14,
@@ -319,7 +332,8 @@
       "Dni": 22723088
     },
     "FechaYHora": "2022-06-10T09:00:00",
-    "EstadoTurno": 0
+    "EstadoTurno": 0,
+    "RecordatorioNotificado": false
   },
   {
     "Id": 15,
@@ -342,6 +356,7 @@
       "Dni": 28304335
     },
     "FechaYHora": "2022-06-10T10:45:00",
-    "EstadoTurno": 0
+    "EstadoTurno": 0,
+    "RecordatorioNotificado": false
   }
 ]

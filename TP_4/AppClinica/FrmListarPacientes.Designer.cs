@@ -44,6 +44,7 @@
             this.dgPacientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgPacientes.Location = new System.Drawing.Point(37, 38);
             this.dgPacientes.Name = "dgPacientes";
+            this.dgPacientes.ReadOnly = true;
             this.dgPacientes.RowTemplate.Height = 25;
             this.dgPacientes.Size = new System.Drawing.Size(824, 310);
             this.dgPacientes.TabIndex = 0;

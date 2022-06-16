@@ -33,18 +33,20 @@
             this.cbPacientes = new System.Windows.Forms.ComboBox();
             this.lblDniPaciente = new System.Windows.Forms.Label();
             this.cbMedicos = new System.Windows.Forms.ComboBox();
-            this.lblDniMedico = new System.Windows.Forms.Label();
+            this.lblMedico = new System.Windows.Forms.Label();
             this.lblFechaTurno = new System.Windows.Forms.Label();
             this.cbHorario = new System.Windows.Forms.ComboBox();
             this.lblHora = new System.Windows.Forms.Label();
             this.cbEspecialidad = new System.Windows.Forms.ComboBox();
             this.lblEspecialidad = new System.Windows.Forms.Label();
+            this.lblPaciente = new System.Windows.Forms.Label();
+            this.txtPaciente = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnGenerarTurno
             // 
             this.btnGenerarTurno.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGenerarTurno.Location = new System.Drawing.Point(104, 306);
+            this.btnGenerarTurno.Location = new System.Drawing.Point(104, 321);
             this.btnGenerarTurno.Name = "btnGenerarTurno";
             this.btnGenerarTurno.Size = new System.Drawing.Size(232, 45);
             this.btnGenerarTurno.TabIndex = 6;
@@ -59,7 +61,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dpFechaTurno.CustomFormat = "dd/MM/yyyy";
             this.dpFechaTurno.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dpFechaTurno.Location = new System.Drawing.Point(151, 194);
+            this.dpFechaTurno.Location = new System.Drawing.Point(149, 219);
             this.dpFechaTurno.Name = "dpFechaTurno";
             this.dpFechaTurno.Size = new System.Drawing.Size(245, 23);
             this.dpFechaTurno.TabIndex = 4;
@@ -70,10 +72,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cbPacientes.FormattingEnabled = true;
-            this.cbPacientes.Location = new System.Drawing.Point(151, 38);
+            this.cbPacientes.Location = new System.Drawing.Point(149, 31);
             this.cbPacientes.Name = "cbPacientes";
-            this.cbPacientes.Size = new System.Drawing.Size(243, 23);
+            this.cbPacientes.Size = new System.Drawing.Size(245, 23);
             this.cbPacientes.TabIndex = 1;
+            this.cbPacientes.Validated += new System.EventHandler(this.cbPacientes_Validated);
             // 
             // lblDniPaciente
             // 
@@ -81,7 +84,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDniPaciente.AutoSize = true;
-            this.lblDniPaciente.Location = new System.Drawing.Point(49, 41);
+            this.lblDniPaciente.Location = new System.Drawing.Point(53, 34);
             this.lblDniPaciente.Name = "lblDniPaciente";
             this.lblDniPaciente.Size = new System.Drawing.Size(81, 15);
             this.lblDniPaciente.TabIndex = 8;
@@ -92,25 +95,24 @@
             this.cbMedicos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbMedicos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMedicos.FormattingEnabled = true;
-            this.cbMedicos.Location = new System.Drawing.Point(151, 142);
+            this.cbMedicos.Location = new System.Drawing.Point(149, 172);
             this.cbMedicos.Name = "cbMedicos";
-            this.cbMedicos.Size = new System.Drawing.Size(243, 23);
+            this.cbMedicos.Size = new System.Drawing.Size(245, 23);
             this.cbMedicos.TabIndex = 3;
-            this.cbMedicos.Click += new System.EventHandler(this.cbMedicos_Click);
-            this.cbMedicos.Enter += new System.EventHandler(this.cbMedicos_Enter);
             // 
-            // lblDniMedico
+            // lblMedico
             // 
-            this.lblDniMedico.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lblMedico.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDniMedico.AutoSize = true;
-            this.lblDniMedico.Location = new System.Drawing.Point(54, 145);
-            this.lblDniMedico.Name = "lblDniMedico";
-            this.lblDniMedico.Size = new System.Drawing.Size(76, 15);
-            this.lblDniMedico.TabIndex = 10;
-            this.lblDniMedico.Text = "D.N.I Médico";
+            this.lblMedico.AutoSize = true;
+            this.lblMedico.Location = new System.Drawing.Point(87, 175);
+            this.lblMedico.Name = "lblMedico";
+            this.lblMedico.Size = new System.Drawing.Size(47, 15);
+            this.lblMedico.TabIndex = 10;
+            this.lblMedico.Text = "Médico";
             // 
             // lblFechaTurno
             // 
@@ -118,7 +120,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFechaTurno.AutoSize = true;
-            this.lblFechaTurno.Location = new System.Drawing.Point(41, 197);
+            this.lblFechaTurno.Location = new System.Drawing.Point(45, 222);
             this.lblFechaTurno.Name = "lblFechaTurno";
             this.lblFechaTurno.Size = new System.Drawing.Size(89, 15);
             this.lblFechaTurno.TabIndex = 11;
@@ -132,9 +134,9 @@
             this.cbHorario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbHorario.FormattingEnabled = true;
             this.cbHorario.ItemHeight = 15;
-            this.cbHorario.Location = new System.Drawing.Point(151, 246);
+            this.cbHorario.Location = new System.Drawing.Point(149, 266);
             this.cbHorario.Name = "cbHorario";
-            this.cbHorario.Size = new System.Drawing.Size(243, 23);
+            this.cbHorario.Size = new System.Drawing.Size(245, 23);
             this.cbHorario.TabIndex = 12;
             this.cbHorario.Click += new System.EventHandler(this.cbHorario_Click);
             // 
@@ -144,7 +146,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblHora.AutoSize = true;
-            this.lblHora.Location = new System.Drawing.Point(14, 249);
+            this.lblHora.Location = new System.Drawing.Point(18, 269);
             this.lblHora.Name = "lblHora";
             this.lblHora.Size = new System.Drawing.Size(116, 15);
             this.lblHora.TabIndex = 13;
@@ -155,11 +157,14 @@
             this.cbEspecialidad.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbEspecialidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbEspecialidad.FormattingEnabled = true;
-            this.cbEspecialidad.Location = new System.Drawing.Point(151, 90);
+            this.cbEspecialidad.Location = new System.Drawing.Point(149, 125);
             this.cbEspecialidad.Name = "cbEspecialidad";
-            this.cbEspecialidad.Size = new System.Drawing.Size(243, 23);
+            this.cbEspecialidad.Size = new System.Drawing.Size(245, 23);
             this.cbEspecialidad.TabIndex = 2;
+            this.cbEspecialidad.SelectedIndexChanged += new System.EventHandler(this.cbEspecialidad_SelectedIndexChanged);
+            this.cbEspecialidad.Enter += new System.EventHandler(this.cbEspecialidad_Enter);
             // 
             // lblEspecialidad
             // 
@@ -167,23 +172,42 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblEspecialidad.AutoSize = true;
-            this.lblEspecialidad.Location = new System.Drawing.Point(49, 93);
+            this.lblEspecialidad.Location = new System.Drawing.Point(62, 128);
             this.lblEspecialidad.Name = "lblEspecialidad";
             this.lblEspecialidad.Size = new System.Drawing.Size(72, 15);
             this.lblEspecialidad.TabIndex = 15;
             this.lblEspecialidad.Text = "Especialidad";
             // 
+            // lblPaciente
+            // 
+            this.lblPaciente.AutoSize = true;
+            this.lblPaciente.Location = new System.Drawing.Point(82, 81);
+            this.lblPaciente.Name = "lblPaciente";
+            this.lblPaciente.Size = new System.Drawing.Size(52, 15);
+            this.lblPaciente.TabIndex = 16;
+            this.lblPaciente.Text = "Paciente";
+            // 
+            // txtPaciente
+            // 
+            this.txtPaciente.Location = new System.Drawing.Point(149, 78);
+            this.txtPaciente.Name = "txtPaciente";
+            this.txtPaciente.ReadOnly = true;
+            this.txtPaciente.Size = new System.Drawing.Size(245, 23);
+            this.txtPaciente.TabIndex = 17;
+            // 
             // FrmAltaTurnos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(438, 374);
+            this.ClientSize = new System.Drawing.Size(438, 389);
+            this.Controls.Add(this.txtPaciente);
+            this.Controls.Add(this.lblPaciente);
             this.Controls.Add(this.lblEspecialidad);
             this.Controls.Add(this.cbEspecialidad);
             this.Controls.Add(this.lblHora);
             this.Controls.Add(this.cbHorario);
             this.Controls.Add(this.lblFechaTurno);
-            this.Controls.Add(this.lblDniMedico);
+            this.Controls.Add(this.lblMedico);
             this.Controls.Add(this.cbMedicos);
             this.Controls.Add(this.lblDniPaciente);
             this.Controls.Add(this.cbPacientes);
@@ -204,11 +228,13 @@
         private System.Windows.Forms.ComboBox cbPacientes;
         private System.Windows.Forms.Label lblDniPaciente;
         private System.Windows.Forms.ComboBox cbMedicos;
-        private System.Windows.Forms.Label lblDniMedico;
+        private System.Windows.Forms.Label lblMedico;
         private System.Windows.Forms.Label lblFechaTurno;
         private System.Windows.Forms.ComboBox cbHorario;
         private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.ComboBox cbEspecialidad;
         private System.Windows.Forms.Label lblEspecialidad;
+        private System.Windows.Forms.Label lblPaciente;
+        private System.Windows.Forms.TextBox txtPaciente;
     }
 }

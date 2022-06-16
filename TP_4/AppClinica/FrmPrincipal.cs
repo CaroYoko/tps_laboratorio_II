@@ -13,25 +13,26 @@ namespace AppClinica
 {
     public partial class FrmPrincipal : Form
     {
-       
+
         public FrmPrincipal()
         {
             InitializeComponent();
         }
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            try {
-
+            try
+            {                
                 cbFiltrado.DataSource = Enum.GetValues(typeof(Turno.Estado));
-
+                               
                 this.ActualizarDataGrid();
             }
-            catch (NoEncontradoExcepcion ex) { 
-            
-                MessageBox.Show(ex.Message);
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
-
+            
         }
 
         private void altaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -60,11 +61,19 @@ namespace AppClinica
 
         private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmAltaTurnos frmAltaTurnos = new FrmAltaTurnos();
-            this.Visible = false;
-            frmAltaTurnos.ShowDialog();
-            ActualizarDataGrid();
-            this.Visible = true;
+            try
+            {
+                FrmAltaTurnos frmAltaTurnos = new FrmAltaTurnos();
+                this.Visible = false;
+                frmAltaTurnos.ShowDialog();
+                ActualizarDataGrid();
+                this.Visible = true;
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void verTodosToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -81,28 +90,53 @@ namespace AppClinica
             FrmIngresarRegistro frmIngresarEstado = new FrmIngresarRegistro();
             this.Visible = false;
             frmIngresarEstado.ShowDialog();
-            this.Visible = true;
             this.ActualizarDataGrid();
+            this.Visible = true;
         }
 
         private void atenderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmIngresarAtencion frmAtenderPaciente = new FrmIngresarAtencion();
-            this.Visible = false;
-            frmAtenderPaciente.ShowDialog();
-            this.Visible = true;
-            this.ActualizarDataGrid();
+            try { 
+            
+                FrmIngresarAtencion frmAtenderPaciente = new FrmIngresarAtencion();
+                this.Visible = false;
+                frmAtenderPaciente.ShowDialog();
+                this.ActualizarDataGrid();
+                this.Visible = true;
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
 
         private void cbFiltrado_SelectedValueChanged(object sender, EventArgs e)
         {
-            this.ActualizarDataGrid();
+            try
+            {
+                this.ActualizarDataGrid();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void FrmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            ArchivosJson<List<Turno>>.Escribir(Clinica.ListadoTurnos, "Turnos", AppDomain.CurrentDomain.BaseDirectory);
-            ArchivosJson<List<Paciente>>.Escribir(Clinica.ListadoPacientes, "Pacientes", AppDomain.CurrentDomain.BaseDirectory);
+            try
+            {
+                ArchivosJson<List<Turno>>.Escribir(Clinica.ListadoTurnos, "Turnos", AppDomain.CurrentDomain.BaseDirectory);
+                ArchivosJson<List<Paciente>>.Escribir(Clinica.ListadoPacientes, "Pacientes", AppDomain.CurrentDomain.BaseDirectory);
+            }
+            catch (ErrorEscrituraException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ErrorLecturaException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
@@ -110,14 +144,42 @@ namespace AppClinica
         /// Actualiza el Datagrid
         /// </summary>
         public void ActualizarDataGrid()
-        {   
-            dgTurnosHoy.DataSource = Turno.FiltrarPorEstado((Turno.Estado)cbFiltrado.SelectedItem);
-            dgTurnosHoy.Refresh();
+        {
+            try
+            {
+
+                if (dgTurnosHoy.InvokeRequired)
+                {
+                    Action action = ActualizarDataGrid;
+                    dgTurnosHoy.Invoke(action);
+                }
+                else
+                {
+                    dgTurnosHoy.DataSource = Turno.FiltrarPorEstado((Turno.Estado)cbFiltrado.SelectedItem);
+                    dgTurnosHoy.Refresh();
+                    dgTurnosHoy.Columns[5].ReadOnly = true;
+                }
+
+            }
+            catch (ErrorLecturaException ex)
+            {
+
+                throw ex;
+            }
+
         }
+
 
         private void enviarRecordatoriosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmCarga frmCarga = new FrmCarga();
+            Task tarea = Task.Run(() =>
+            {
+                FrmRecordatorio frmRecordatorio = new FrmRecordatorio();
+                frmRecordatorio.ActualizarTablas += ActualizarDataGrid;
+                frmRecordatorio.ShowDialog();
+            });
+
+
         }
     }
 }

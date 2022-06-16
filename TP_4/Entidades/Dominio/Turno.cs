@@ -20,7 +20,7 @@ namespace Entidades
         Paciente paciente;
         Medico medico;
         Estado estadoTurno;
-               
+        bool recordatorioNotificado;
         public Turno()
         {
             this.estadoTurno = Estado.Pendiente;           
@@ -31,13 +31,16 @@ namespace Entidades
             this.fechaYHora = fechaYHora;
             this.paciente = paciente;
             this.medico = medico;
-            
+            this.RecordatorioNotificado = false;
+
+
         }
         
         [JsonConstructor]
-        public Turno(int id, DateTime fechaYHora, Paciente paciente, Medico medico) : this(fechaYHora, paciente, medico)
+        public Turno(int id, DateTime fechaYHora, Paciente paciente, Medico medico, bool recordatorioNotificado) : this(fechaYHora, paciente, medico)
         {
-            this.id = id;                   
+            this.id = id;
+            this.RecordatorioNotificado = recordatorioNotificado;
 
         }        
 
@@ -70,8 +73,15 @@ namespace Entidades
             set { this.estadoTurno = value; }
         }
 
+        public bool RecordatorioNotificado { get => recordatorioNotificado; set => recordatorioNotificado = value; }
 
 
+        public void RecibirNotificacion() {
+            this.RecordatorioNotificado = true;
+            TurnoDAO turnoDAO = new TurnoDAO();
+            turnoDAO.ActualizarRecordatorio(this);
+
+        }
         /// <summary>
         /// Valida si el medico tiene diponibilidad de atencion en un día y horario determinado
         /// </summary>
@@ -96,7 +106,7 @@ namespace Entidades
         /// <param name="paciente"></param>
         /// <param name="fechaYHora"></param>
         /// <returns>true si puede atenderse, sino false</returns>
-        public static bool ValidarClienteDisponible(Paciente paciente, DateTime fechaYHora)
+        public static bool ValidarPacienteDisponible(Paciente paciente, DateTime fechaYHora)
         {
             List<Turno> lista = Clinica.ListadoTurnos;
 
@@ -134,13 +144,21 @@ namespace Entidades
         /// <param name="estado"></param>
         /// <returns> Retrorna la lista filtrada</returns>
         public static List<Turno> FiltrarPorEstado(Estado estado)
-        {         
+        {
+            try
+            {
+                List<Turno> listadoTurnos = Clinica.BuscarTurno(DateTime.Now.Date);
 
-            List<Turno> listadoTurnos = Clinica.BuscarTurno(DateTime.Now.Date);
+                List<Turno> auxLista = listadoTurnos.Where((turno) => estado == Turno.Estado.Todos || turno.EstadoTurno == estado).Cast<Turno>().ToList();
 
-            List<Turno> auxLista = listadoTurnos.Where((turno) => estado == Turno.Estado.Todos ||  turno.EstadoTurno == estado).Cast<Turno>().ToList();
-         
-            return auxLista;
+                return auxLista;
+
+            }
+            catch (ErrorLecturaException ex) {
+
+                throw ex;
+            
+            }
         }
 
         /// <summary>
@@ -151,7 +169,7 @@ namespace Entidades
         { 
             TurnoDAO turnoDAO = new TurnoDAO();
 
-            if (Turno.ValidarClienteDisponible(this.Paciente, this.FechaYHora) && Turno.ValidarMedicoDisponible(this.Medico, this.FechaYHora))
+            if (Turno.ValidarPacienteDisponible(this.Paciente, this.FechaYHora) && Turno.ValidarMedicoDisponible(this.Medico, this.FechaYHora))
             {                
                 turnoDAO.Guardar(this);
             }
@@ -176,7 +194,8 @@ namespace Entidades
             }
             return false;
         }
+             
 
-
+       
     }
 }

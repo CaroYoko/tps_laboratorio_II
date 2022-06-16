@@ -21,7 +21,6 @@ namespace AppClinica
         }
 
         private void FrmAltaTurnos_Load(object sender, EventArgs e)
-
         {
             cbEspecialidad.DataSource = Enum.GetValues(typeof(Especialidad));
 
@@ -30,6 +29,9 @@ namespace AppClinica
 
             cbHorario.DataSource = horarios;
             cbHorario.SelectedIndex = -1;
+            
+            cbMedicos.SelectedIndex = -1;
+            //cbEspecialidad.SelectedIndex = -1;
 
         }
 
@@ -37,7 +39,7 @@ namespace AppClinica
         {
             try
             {
-                Medico medico = Medico.BuscarMedicoPorDNI(int.Parse(cbMedicos.Text));
+                Medico medico = Medico.BuscarMedicoPorNombreYApellido(cbMedicos.Text);
                 Paciente paciente = Paciente.BuscarPacientePorDNI(int.Parse(cbPacientes.Text));
 
                 DateTime fecha = Convert.ToDateTime(dpFechaTurno.Text);
@@ -75,13 +77,15 @@ namespace AppClinica
 
         private void cbHorario_Click(object sender, EventArgs e)
         {
-            cbHorario.DataSource = CalcularHorarioDisponible();
+            try {
+                cbHorario.DataSource = CalcularHorarioDisponible();
+
+            }
+            catch (ErrorLecturaException ex) {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void cbMedicos_Click(object sender, EventArgs e)
-        {
-            CargarComboboxMedico(ActualizarComboBoxMedicos());
-        }
 
         /// <summary>
         /// Calcula el horario disponible del medico a partir del día elegido
@@ -128,32 +132,8 @@ namespace AppClinica
         /// </summary>
         /// <returns>lista de medicos</returns>
         private List<Medico> ActualizarComboBoxMedicos()
-        {
-            List<Medico> auxLista = new List<Medico>();
-
-            switch ((Especialidad)cbEspecialidad.SelectedItem)
-            {
-                case Especialidad.Clínico:
-                    auxLista = Medico.FiltrarMedicoPorEspecialidad(Especialidad.Clínico);
-                    break;
-                case Especialidad.Nutrición:
-                    auxLista = Medico.FiltrarMedicoPorEspecialidad(Especialidad.Nutrición);
-                    break;
-                case Especialidad.Pediatría:
-                    auxLista = Medico.FiltrarMedicoPorEspecialidad(Especialidad.Pediatría);
-                    break;
-                case Especialidad.Cardiología:
-                    auxLista = Medico.FiltrarMedicoPorEspecialidad(Especialidad.Cardiología);
-                    break;
-                case Especialidad.Neurología:
-                    auxLista = Medico.FiltrarMedicoPorEspecialidad(Especialidad.Neurología);
-                    break;
-                case Especialidad.Gastroenterología:
-                    auxLista = Medico.FiltrarMedicoPorEspecialidad(Especialidad.Gastroenterología);
-                    break;
-            }
-
-            return auxLista;
+        {                      
+            return Medico.FiltrarMedicoPorEspecialidad((Especialidad)cbEspecialidad.SelectedItem);
 
         }
 
@@ -163,14 +143,7 @@ namespace AppClinica
         /// <param name="lista"></param>
         private void CargarComboboxMedico(List<Medico> lista)
         {
-            AutoCompleteStringCollection stringColMedico = new AutoCompleteStringCollection();
-            foreach (Medico medico in lista)
-            {
-                stringColMedico.Add(medico.Dni.ToString());
-            }
-            cbMedicos.AutoCompleteCustomSource = stringColMedico;
-            cbMedicos.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            cbMedicos.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbMedicos.DataSource = lista;
 
         }
         
@@ -187,13 +160,30 @@ namespace AppClinica
 
             cbPacientes.AutoCompleteCustomSource = stringColPaciente;
             cbPacientes.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            cbPacientes.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbPacientes.AutoCompleteMode = AutoCompleteMode.SuggestAppend;                     
+
 
         }
 
-        private void cbMedicos_Enter(object sender, EventArgs e)
+        private void cbEspecialidad_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarComboboxMedico(ActualizarComboBoxMedicos());
+        }        
+                
+        private void cbPacientes_Validated(object sender, EventArgs e)
+        {
+            int dniPaciente;
+            if (cbPacientes is not null && int.TryParse(cbPacientes.Text, out dniPaciente))
+            {
+                txtPaciente.Text = Paciente.BuscarPacientePorDNI(dniPaciente).ToString();
+            }
+
+        }
+
+        private void cbEspecialidad_Enter(object sender, EventArgs e)
+        {
+            CargarComboboxMedico(ActualizarComboBoxMedicos());
+
         }
     }
 }

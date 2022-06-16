@@ -41,6 +41,7 @@
             this.dgMedicos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgMedicos.Location = new System.Drawing.Point(34, 30);
             this.dgMedicos.Name = "dgMedicos";
+            this.dgMedicos.ReadOnly = true;
             this.dgMedicos.RowTemplate.Height = 25;
             this.dgMedicos.Size = new System.Drawing.Size(824, 345);
             this.dgMedicos.TabIndex = 0;

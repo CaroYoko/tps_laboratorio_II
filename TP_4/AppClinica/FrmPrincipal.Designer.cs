@@ -155,14 +155,16 @@
             // 
             // dgTurnosHoy
             // 
+            this.dgTurnosHoy.AllowUserToAddRows = false;
+            this.dgTurnosHoy.AllowUserToDeleteRows = false;
             this.dgTurnosHoy.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgTurnosHoy.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgTurnosHoy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgTurnosHoy.Cursor = System.Windows.Forms.Cursors.Default;
             this.dgTurnosHoy.Location = new System.Drawing.Point(29, 99);
             this.dgTurnosHoy.Name = "dgTurnosHoy";
+            this.dgTurnosHoy.ReadOnly = true;
             this.dgTurnosHoy.RowTemplate.Height = 25;
             this.dgTurnosHoy.Size = new System.Drawing.Size(474, 293);
             this.dgTurnosHoy.TabIndex = 1;

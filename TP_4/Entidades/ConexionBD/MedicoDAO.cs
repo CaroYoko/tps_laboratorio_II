@@ -32,7 +32,7 @@ namespace Entidades
             {
                 connection.Open();
 
-                string query = "INSERT INTO Pacientes (nombre,apellido,celular,email,dni,obraSocial) VALUES (@nombre, @apellido, @celular, @email, @dni, @especialidad)";
+                string query = "INSERT INTO Medicos (nombre,apellido,celular,email,dni,especialidad) VALUES (@nombre, @apellido, @celular, @email, @dni, @especialidad)";
 
                 command.CommandText = query;
 
@@ -49,7 +49,7 @@ namespace Entidades
             }
             catch (Exception)
             {
-                throw;
+                throw new ErrorEscrituraException("No fue posible guardar el paciente");
             }
             finally
             {
@@ -101,5 +101,35 @@ namespace Entidades
             }
 
         }
+
+        public void EliminarPorDNI(int dni)
+        {
+            try
+            {
+                string query = "DELETE FROM Medicos WHERE dni = @dni";
+
+                connection.Open();
+
+                command.CommandText = query;
+
+                command.Parameters.Clear();
+                command.Parameters.AddWithValue("dni", dni);
+
+                command.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                if (connection is not null && connection.State == System.Data.ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+        }
+
     }
 }

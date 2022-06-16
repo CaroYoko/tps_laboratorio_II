@@ -64,11 +64,13 @@ namespace Entidades
         /// <param name="dni"></param>
         /// <returns>Medico</returns>
         /// <exception cref="NoEncontradoExcepcion"></exception>
-        public static Medico BuscarMedicoPorDNI(int dni)
+        public static Medico BuscarMedicoPorNombreYApellido(string nombreApellido)
         {
+            string[] separacion = nombreApellido.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
             foreach (Medico medico in Clinica.ListadoMedicos)
             {
-                if (medico.Dni == dni)
+                if (medico.Nombre == separacion[0] && medico.Apellido == separacion[1])
                 {
                     return medico;
                 }
@@ -77,6 +79,8 @@ namespace Entidades
             throw new NoEncontradoExcepcion("Médico no registrado");
 
         }
+
+
 
         public static Medico BuscarMedicoPorId(int idMedico)
         {

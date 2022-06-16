@@ -42,9 +42,9 @@ namespace Entidades
                 }
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                throw new Exception($"Error en el archivo ubicado en {path}", e);
+                throw new ErrorEscrituraException($"Error en el archivo ubicado en {path}");
             }
         }
 

@@ -53,7 +53,7 @@ namespace Entidades
             }
             catch (Exception)
             {
-                throw;
+                throw new ErrorEscrituraException("No fue posible guardar el paciente");
             }
             finally
             {
@@ -118,6 +118,35 @@ namespace Entidades
 
                 command.Parameters.Clear();
                 command.Parameters.AddWithValue("idBuscado", id);
+
+                command.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                if (connection is not null && connection.State == System.Data.ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public void EliminarPorDNI(int dni)
+        {
+            try
+            {
+                string query = "DELETE FROM Pacientes WHERE dni = @dni";
+
+                connection.Open();
+
+                command.CommandText = query;
+
+                command.Parameters.Clear();
+                command.Parameters.AddWithValue("dni", dni);
 
                 command.ExecuteNonQuery();
             }

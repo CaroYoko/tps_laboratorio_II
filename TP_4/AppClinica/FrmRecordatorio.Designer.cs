@@ -48,15 +48,16 @@
             this.btnCancelar.TabIndex = 1;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // lblRecordatorio
             // 
             this.lblRecordatorio.AutoSize = true;
-            this.lblRecordatorio.Location = new System.Drawing.Point(104, 45);
+            this.lblRecordatorio.Location = new System.Drawing.Point(48, 50);
             this.lblRecordatorio.Name = "lblRecordatorio";
-            this.lblRecordatorio.Size = new System.Drawing.Size(141, 15);
+            this.lblRecordatorio.Size = new System.Drawing.Size(258, 15);
             this.lblRecordatorio.TabIndex = 2;
-            this.lblRecordatorio.Text = "Enviando recordatorios ...";
+            this.lblRecordatorio.Text = "Enviando recordatorios a los turnos de mañana ";
             // 
             // FrmRecordatorio
             // 
@@ -66,9 +67,10 @@
             this.Controls.Add(this.lblRecordatorio);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.pbRecordatorio);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmRecordatorio";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Recordatorios";
-            this.Activated += new System.EventHandler(this.FrmRecordatorio_Activated);
             this.Load += new System.EventHandler(this.FrmRecordatorio_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

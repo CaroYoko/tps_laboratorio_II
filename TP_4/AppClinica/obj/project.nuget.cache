@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rayHSAcuNwX6umvuH1AXTPZAf/+ooh8LmCpRKTUiZ6NNff3TFCnEGEhwzFGKuaMRe2tlrTUIZ+EJYspKG9/nng==",
+  "dgSpecHash": "baCQlceIWgfFj6aZ02mdRM9XaPn7yb1PdDH1TaNCbDkwPthX8Dp4nY3kWDJhVPVDHyArDkzqaG8+BOHbCMUy9g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Carolina\\Desktop\\tps_laboratorio_II\\TP_4\\AppClinica\\AppClinica.csproj",
+  "projectFilePath": "C:\\Users\\Carolina\\Desktop\\TP4\\LaboCaro\\TP_4\\AppClinica\\AppClinica.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Carolina\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Carolina\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

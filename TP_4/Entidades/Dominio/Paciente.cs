@@ -20,7 +20,6 @@ namespace Entidades
         static int ultimoId;
         int id;
 
-
         static Paciente()
         {
             Paciente.ultimoId = 1;

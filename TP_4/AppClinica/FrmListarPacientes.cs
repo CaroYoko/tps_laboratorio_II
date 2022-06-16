@@ -36,9 +36,9 @@ namespace AppClinica
                 MessageBox.Show(String.Format($"Archivo exportado con éxito\n\nUbicación: {Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\\Datos"), "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
-            catch (Exception) {
+            catch (ErrorEscrituraException ex) {
 
-                MessageBox.Show("Error a exportar el archivo");
+                MessageBox.Show(ex.Message, "Error");
             }
         }
 

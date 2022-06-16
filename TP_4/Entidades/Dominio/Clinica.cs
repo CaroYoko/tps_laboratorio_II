@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades.Extension;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,12 +15,12 @@ namespace Entidades
     }
 
     public static class Clinica
-    {        
+    {
         private static List<Turno> listadoTurnosHoy;
 
 
         static Clinica()
-        {           
+        {
             Clinica.ListadoTurnosHoy = new List<Turno>();
         }
 
@@ -36,8 +37,15 @@ namespace Entidades
         {
             get
             {
-                TurnoDAO turnoDAO = new TurnoDAO();
-                return turnoDAO.Leer();
+                try
+                {
+                    TurnoDAO turnoDAO = new TurnoDAO();
+                    return turnoDAO.Leer();
+                }
+                catch(ErrorLecturaException ex) {
+
+                    throw ex;
+                }
 
             }
         }
@@ -61,18 +69,13 @@ namespace Entidades
         /// <param name="archivo"></param>
         public static void Importar<T>(string archivo) where T : class, IListable
         {
-            try
-            {
-                List<T> auxLista = new List<T>();
 
-                auxLista = ArchivosJson<List<T>>.Leer(archivo, AppDomain.CurrentDomain.BaseDirectory);
+            List<T> auxLista = new List<T>();
 
-                AgregarListado(auxLista);
-            }
-            catch (NoEncontradoExcepcion ex)
-            {
-                throw ex;
-            }
+            auxLista = ArchivosJson<List<T>>.Leer(archivo, AppDomain.CurrentDomain.BaseDirectory);
+
+            auxLista.AgregarListado();
+
 
         }
 
@@ -110,17 +113,33 @@ namespace Entidades
         /// <returns> Si se utiliza el primer y segundo parametro, devuelve la lista con todos los turnos de la fecha de ese dni de paciente </returns>
         public static List<Turno> BuscarTurno(DateTime fecha, int dni = 0)
         {
-            List<Turno> lista = new List<Turno>();
+            try {
 
-            foreach (Turno turno in Clinica.ListadoTurnos)
-            {
-                if (fecha.Date == turno.FechaYHora.Date && (dni == 0 || dni == turno.Paciente.Dni))
+                List<Turno> lista = new List<Turno>();
+
+                foreach (Turno turno in Clinica.ListadoTurnos)
                 {
-                    lista.Add(turno);
+                    if (fecha.Date == turno.FechaYHora.Date && (dni == 0 || dni == turno.Paciente.Dni))
+                    {
+                        lista.Add(turno);
+                    }
                 }
+                return lista;
+            }
+            catch (ErrorLecturaException ex) {
+                throw ex;
             }
 
-            return lista;
+
+        }
+
+        public static void Notificar(DateTime fechaANotificar)
+        {
+            List<Turno> listadoTurnos = Clinica.BuscarTurno(fechaANotificar);
+            listadoTurnos.ForEach(turno =>
+            {
+                turno.RecibirNotificacion();
+            });
 
         }
 

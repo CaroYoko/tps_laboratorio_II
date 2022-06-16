@@ -32,9 +32,9 @@ namespace Entidades
                 File.WriteAllText(nombreArchivo, JsonSerializer.Serialize(datos));
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                throw new Exception($"Error en el archivo ubicado en {path}", e);
+                throw new ErrorEscrituraException($"Error en el archivo ubicado en {path}");
             }
         }
 
@@ -75,9 +75,9 @@ namespace Entidades
                 return datosRecuperados;
             }
             
-            catch (Exception e)
+            catch (Exception)
             {
-                throw new Exception($"Error en el archivo ubicado en {path}", e);
+                throw new ErrorLecturaException($"Error en el archivo ubicado en {path}");
             }
 
         }

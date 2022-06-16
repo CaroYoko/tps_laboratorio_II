@@ -28,16 +28,32 @@ namespace AppClinica
                 
         private void btnExportar_Click(object sender, EventArgs e)
         {
-            if (ObtenerExtension() == ETipoExtension.Json)
-            {            
-                ArchivosJson<List<Turno>>.Escribir(Clinica.ListadoTurnos, "Turnos_Exportado",Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\");
+            try
+            {
+
+                if (ObtenerExtension() == ETipoExtension.Json)
+                {
+                    ArchivosJson<List<Turno>>.Escribir(Clinica.ListadoTurnos, "Turnos_Exportado", Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\");
+                }
+                else
+                {
+                    ArchivosXml<List<Turno>>.Escribir(Clinica.ListadoTurnos, "Turnos");
+                }
+
+                MessageBox.Show(String.Format($"Archivo exportado con éxito\n\nUbicación: {Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\\Datos"), "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
-            else {
-                ArchivosXml<List<Turno>>.Escribir(Clinica.ListadoTurnos, "Turnos");
+            catch (ErrorEscrituraException ex) {
+
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ErrorLecturaException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            MessageBox.Show(String.Format($"Archivo exportado con éxito\n\nUbicación: {Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\\Datos"), "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                      
+
+
         }
 
         private void btnCancelarTurno_Click(object sender, EventArgs e)
@@ -60,8 +76,17 @@ namespace AppClinica
         /// </summary>
         private void ActualizarDataGrid()
         {
-            dgTurnos.DataSource = Clinica.ListadoTurnos;
-            dgTurnos.Refresh();
+            try { 
+            
+                dgTurnos.DataSource = Clinica.ListadoTurnos;
+                dgTurnos.Refresh();
+            
+            }
+            catch (ErrorLecturaException ex)            {
+
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         /// <summary>
@@ -104,8 +129,16 @@ namespace AppClinica
 
         private void btnImportar_Click(object sender, EventArgs e)
         {
-            Clinica.Importar<Turno>("Turnos.json");
-            ActualizarDataGrid();
+            try {
+
+                Clinica.Importar<Turno>("Turnos.json");
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
     }
 }
