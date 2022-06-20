@@ -32,30 +32,36 @@ namespace AppClinica
             this.txtDni.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             this.txtDni.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
+            
             ActualizarDataGrid();
 
+           
+            dgPacientes.Columns["Id"].ReadOnly = true;
+            dgPacientes.Columns["Paciente"].ReadOnly = true;
+            dgPacientes.Columns["Medico"].ReadOnly = true;
+            dgPacientes.Columns["FechaYHora"].ReadOnly = true;
+            dgPacientes.Columns["RecordatorioNotificado"].ReadOnly = true;
+           
         }
 
         private void btnRegistrarTurno_Click(object sender, EventArgs e)
         {
             try
             {
-                CambiarEstados();
-
-                if (MessageBox.Show("Registro exitoso", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
+                if (CambiarEstados() && MessageBox.Show("Registro exitoso", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
                 {
                     this.Close();
                 }
+                else {
+                    MessageBox.Show("Cambiar el estado a 'Espera' o 'Ausente'", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
 
             }
-            catch (ListaVaciaException ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (ErrorLecturaException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -104,8 +110,10 @@ namespace AppClinica
         /// Cambia el estado del turno segun lo cargado en el combobox
         /// </summary>
         /// <exception cref="ListaVaciaException"></exception>
-        private void CambiarEstados()
+        private bool CambiarEstados()
         {
+            bool seleccion = false;
+
             if (dgPacientes.Rows.Count == 0)
             {
                 throw new ListaVaciaException("No hay turnos");
@@ -117,18 +125,19 @@ namespace AppClinica
                 {
                     int auxId = int.Parse(dg.Cells["Id"].Value.ToString() ?? "");
 
-                    foreach (Turno turno in Clinica.BuscarTurno(DateTime.Now.Date))
+                    foreach (Turno turno in Clinica.ListadoTurnosHoy) //Clinica.BuscarTurno(DateTime.Now.Date)
                     {
                         if (turno.Id == auxId)
                         {
                             turno.EstadoTurno = (Turno.Estado)dg.Cells["Estado"].Value;
                         }
-
                     }
 
-                }
-            }
+                    seleccion = true;
+                }                
 
+            }
+            return seleccion;
         }
     }
 }

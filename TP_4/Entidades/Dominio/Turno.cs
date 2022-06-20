@@ -121,7 +121,7 @@ namespace Entidades
         }
 
         /// <summary>
-        /// Busca el turno con el ID indicado
+        /// Busca el turno con el ID indicado en la Base de datos
         /// </summary>
         /// <param name="auxId"></param>
         /// <returns>Retorna el Turno buscado</returns>
@@ -129,6 +129,24 @@ namespace Entidades
         {
             Turno retorno = null;
             foreach (Turno turno in Clinica.ListadoTurnos)
+            {
+                if (turno.Id == auxId)
+                {
+                    retorno = turno;
+                }
+            }
+            return retorno;
+        }
+
+        /// <summary>
+        /// Busca el turno con el ID indicado en el listado del dia de la fecha
+        /// </summary>
+        /// <param name="auxId"></param>
+        /// <returns>Retorna el Turno buscado</returns>
+        public static Turno BuscarTurnoPorIdListaHoy(int auxId)
+        {
+            Turno retorno = null;
+            foreach (Turno turno in Clinica.ListadoTurnosHoy)
             {
                 if (turno.Id == auxId)
                 {
@@ -147,7 +165,7 @@ namespace Entidades
         {
             try
             {
-                List<Turno> listadoTurnos = Clinica.BuscarTurno(DateTime.Now.Date);
+                List<Turno> listadoTurnos = Clinica.ListadoTurnosHoy; //Clinica.BuscarTurno(DateTime.Now.Date)
 
                 List<Turno> auxLista = listadoTurnos.Where((turno) => estado == Turno.Estado.Todos || turno.EstadoTurno == estado).Cast<Turno>().ToList();
 

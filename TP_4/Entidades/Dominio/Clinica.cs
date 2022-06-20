@@ -59,7 +59,7 @@ namespace Entidades
             }
         }
 
-        public static List<Turno> ListadoTurnosHoy { get => listadoTurnosHoy; set => listadoTurnosHoy = value; }
+        public static List<Turno> ListadoTurnosHoy { get => listadoTurnosHoy; set => listadoTurnosHoy = Clinica.BuscarTurno(DateTime.Now.Date); }
 
 
         /// <summary>
@@ -133,6 +133,10 @@ namespace Entidades
 
         }
 
+        /// <summary>
+        /// Notifica a los pacientes con turnos con la fecha dada
+        /// </summary>
+        /// <param name="fechaANotificar"></param>
         public static void Notificar(DateTime fechaANotificar)
         {
             List<Turno> listadoTurnos = Clinica.BuscarTurno(fechaANotificar);

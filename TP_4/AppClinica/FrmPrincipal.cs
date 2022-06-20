@@ -154,7 +154,6 @@ namespace AppClinica
             {
                 dgTurnosHoy.DataSource = Turno.FiltrarPorEstado((Turno.Estado)cbFiltrado.SelectedItem);
                 dgTurnosHoy.Refresh();
-                dgTurnosHoy.Columns[5].ReadOnly = true;
             }
 
         }

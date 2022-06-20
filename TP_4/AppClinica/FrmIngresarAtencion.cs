@@ -23,7 +23,7 @@ namespace AppClinica
         {
             AutoCompleteStringCollection listaAutocompletar = new AutoCompleteStringCollection();
 
-            foreach (Turno turno in Clinica.BuscarTurno(DateTime.Now.Date))
+            foreach (Turno turno in Clinica.ListadoTurnosHoy) //Clinica.BuscarTurno(DateTime.Now.Date, dni)
             {
                 listaAutocompletar.Add(turno.Paciente.Dni.ToString());
             }
@@ -57,14 +57,18 @@ namespace AppClinica
             try
             {
                 CargarTurnoSeleccion();
+
                 if (turnoSeleccion is not null)
                 {
                     turnoSeleccion.EstadoTurno = Turno.Estado.Atendido;
-                }
 
-                if (MessageBox.Show("Atención exitosa", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
-                {
-                    this.Close();
+                    if (MessageBox.Show("Atención exitosa", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
+                    {
+                        this.Close();
+                    }
+                }
+                else {                 
+                    MessageBox.Show("Seleccione un turno", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
 
             }
@@ -101,7 +105,7 @@ namespace AppClinica
                 DataGridViewRow fila = dgPacientes.Rows[indiceFila];
                 int auxId = int.Parse(fila.Cells["Id"].Value.ToString() ?? "");
 
-                FrmIngresarAtencion.turnoSeleccion = Turno.BuscarTurnoPorId(auxId);
+                FrmIngresarAtencion.turnoSeleccion = Turno.BuscarTurnoPorIdListaHoy(auxId);
             }
 
         }
