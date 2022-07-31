@@ -32,7 +32,7 @@ namespace Entidades
         /// <summary>
         /// ReadOnly: Retornará el tamaño
         /// </summary>
-        protected abstract ETamanio Tamanio { get; }
+        protected virtual ETamanio Tamanio { get; }    // POLIMORFISMO - REEMPLACE ABSTRACT POR VIRTUAL 
 
         /// <summary>
         /// Publica todos los datos del Vehiculo.
@@ -50,6 +50,7 @@ namespace Entidades
             sb.AppendLine(String.Format("CHASIS: {0}", p.chasis));
             sb.AppendLine(String.Format("MARCA : {0}", p.marca.ToString()));
             sb.AppendLine(String.Format("COLOR : {0}", p.color.ToString()));
+            sb.AppendLine(String.Format("TAMAÑO : {0}", p.Tamanio)); // POLIMORFISMO           
             sb.AppendLine("---------------------");
 
             return sb.ToString();
@@ -71,17 +72,18 @@ namespace Entidades
         /// <param name="v1"></param>
         /// <param name="v2"></param>
         /// <returns></returns>
-        public static bool operator !=(Vehiculo v1, Vehiculo v2)
+        public static bool operator !=(Vehiculo v1, Vehiculo v2) // REUTILICE CODIGO 
         {
-            return !(v1.chasis == v2.chasis);
+            return !(v1 == v2);
         }
 
+        /*
         public override bool Equals(Object objeto)
         {
             bool respuesta = false;
             if (objeto is Vehiculo)
             {
-                respuesta = (Vehiculo)objeto == this;
+                respuesta = (Vehiculo)objeto == this;      // BORRAR OK
             }
 
             return respuesta;
@@ -91,5 +93,6 @@ namespace Entidades
         {
             return this.chasis.GetHashCode();
         }
+        */
     }
 }
