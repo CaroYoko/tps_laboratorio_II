@@ -121,7 +121,7 @@ namespace Entidades
             {
                 if (v == vehiculo)
                 {
-                    taller.vehiculos.Remove(vehiculo);
+                    taller.vehiculos.Remove(v);
                     break;
                 }
             }

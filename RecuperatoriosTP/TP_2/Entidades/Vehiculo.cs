@@ -32,7 +32,7 @@ namespace Entidades
         /// <summary>
         /// ReadOnly: Retornará el tamaño
         /// </summary>
-        protected virtual ETamanio Tamanio { get; }    // POLIMORFISMO - REEMPLACE ABSTRACT POR VIRTUAL 
+        protected abstract ETamanio Tamanio { get; }   
 
         /// <summary>
         /// Publica todos los datos del Vehiculo.
@@ -77,22 +77,6 @@ namespace Entidades
             return !(v1 == v2);
         }
 
-        /*
-        public override bool Equals(Object objeto)
-        {
-            bool respuesta = false;
-            if (objeto is Vehiculo)
-            {
-                respuesta = (Vehiculo)objeto == this;      // BORRAR OK
-            }
-
-            return respuesta;
-        }
-
-        public override int GetHashCode()
-        {
-            return this.chasis.GetHashCode();
-        }
-        */
+       
     }
 }
