@@ -14,8 +14,7 @@ namespace Entidades
         List<Vehiculo> vehiculos;
         int espacioDisponible;
         public enum ETipo
-        {
-            //Moto, Automovil, Camioneta, Todos,
+        {            
             Ciclomotor, Sedan, SUV, Todos
         }
 

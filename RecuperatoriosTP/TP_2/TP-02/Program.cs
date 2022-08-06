@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TP_02_2018 // Pusheado
+namespace TP_02_2018
 {
     class Program
     {
@@ -44,12 +44,6 @@ namespace TP_02_2018 // Pusheado
             Console.WriteLine("<-----------PRESIONE UNA TECLA PARA CONTINUAR----------->");
             Console.ReadKey();
             Console.Clear();
-
-            /*
-            // Quito 2 items y muestro
-            taller -= c1;
-            taller -= new Ciclomotor(Vehiculo.EMarca.Honda, "ASD913", ConsoleColor.Red);
-            */
             
             // Quito 2 items y muestro
             taller -= c1;

@@ -50,7 +50,7 @@ namespace Entidades
             sb.AppendLine(String.Format("CHASIS: {0}", p.chasis));
             sb.AppendLine(String.Format("MARCA : {0}", p.marca.ToString()));
             sb.AppendLine(String.Format("COLOR : {0}", p.color.ToString()));
-            sb.AppendLine(String.Format("TAMAÑO : {0}", p.Tamanio)); // POLIMORFISMO           
+            sb.AppendLine(String.Format("TAMAÑO : {0}", p.Tamanio));          
             sb.AppendLine("---------------------");
 
             return sb.ToString();
@@ -72,7 +72,7 @@ namespace Entidades
         /// <param name="v1"></param>
         /// <param name="v2"></param>
         /// <returns></returns>
-        public static bool operator !=(Vehiculo v1, Vehiculo v2) // REUTILICE CODIGO 
+        public static bool operator !=(Vehiculo v1, Vehiculo v2)
         {
             return !(v1 == v2);
         }

@@ -19,7 +19,7 @@ namespace Entidades
         /// <param name="marca"></param>
         /// <param name="chasis"></param>
         /// <param name="color"></param>
-        public Sedan(EMarca marca, string chasis, ConsoleColor color)    // REUTILICE CONSTRUCTOR
+        public Sedan(EMarca marca, string chasis, ConsoleColor color)
             : this(marca, chasis, color, ETipo.CuatroPuertas)
         {
             
